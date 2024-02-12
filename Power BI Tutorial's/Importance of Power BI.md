@@ -32,12 +32,14 @@ Power BI accommodates both local and cloud-based data sources, allowing connecti
 2. **Power BI Desktop** - In Power BI, a data source refers to the entity from which data is extracted to generate reports and visualizations. This source can be a file, webpage, database, or another application or service.
 Power BI accommodates both local and cloud-based data sources, allowing connections to sources on the same computer/server as well as those stored in other servers (cloud). These connections enable the extraction of necessary data.
 
-![data sources]([https://windsor.ai/wp-content/uploads/2023/12/powerbi-data-sources.png.webp](https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)
+![Power BI Desktop](https://k21academy.com/wp-content/uploads/2021/09/2021-09-16-17_14_38-Window-1024x550.png)
 
 3. **Power BI Services** - The Power BI Service is a Cloud-based or Software-as-a-Service (SaaS) offering of Power BI. It allows teams and organisations to edit reports and collaborate on them. Connecting to data sources in the Power BI service is also possible, but modelling is limited. The Power BI service is used to create dashboards, create and share apps, analyse and explore data to uncover business insights, and much more.
 
-![data sources]([[https://windsor.ai/wp-content/uploads/2023/12/powerbi-data-sources.png.webp](https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png](https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)
+![Power BI Services](https://msdynamicsnavashwinitripathi.files.wordpress.com/2016/08/realtimesync-1.jpg)
 
-3. **Power BI Services** - The Power BI Service is a Cloud-based or Software-as-a-Service (SaaS) offering of Power BI. It allows teams and organisations to edit reports and collaborate on them. Connecting to data sources in the Power BI service is also possible, but modelling is limited. The Power BI service is used to create dashboards, create and share apps, analyse and explore data to uncover business insights, and much more.
+4. **Power BI Gateway** - Power BI gateway is a software that can connect and access the data sources stored locally on-premises. It can help the businesses who keep the data in the local databases behind the firewall but wish to use Microsoft cloud services.
 
-![data sources]([[https://windsor.ai/wp-content/uploads/2023/12/powerbi-data-sources.png.webp](https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png](https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)
+![data sources](https://acquiscent.com/wp-content/uploads/2021/01/Power-BI-Gateway-1-845x321.png)
+
+5. **Report/Dashboard Access** - Here we share or give access to customer or our team members
