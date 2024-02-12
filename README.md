@@ -1,4 +1,4 @@
-# 😎 Power_BI - Torture_the_Data 🤕
+# 😎 Power BI - Torture the Data 🤕
 - 😜 If you 🥴 torture 🥴 the data long enough, it will confess 🙏.
 - " Data are just summaries of thousands of stories – tell a few of those stories to help make the data meaningful "
 
