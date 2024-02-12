@@ -19,3 +19,25 @@
 5. **Power BI Desktop** - Power BI Desktop is a Power Query, Power Pivot, and Power View development tool. With Power BI Desktop, you have everything in one place and can quickly build BI and data analysis skills.
 6. **Power BI Service** - The Power BI Service is a Cloud-based or Software-as-a-Service (SaaS) offering of Power BI. It allows teams and organizations to edit reports and collaborate on them.
 7. **Power Q&A** - Power BI’s Q&A tool lets you explore your data on your terms. It’s the quickest way to receive a natural-language answer from your data.
+
+### **Power BI Architecture:**
+
+![Power BI Architecture](https://www.spec-india.com/wp-content/uploads/2019/04/Power-BI-Architecture.jpg)
+
+1. **Data Sources** - In Power BI, a data source refers to the entity from which data is extracted to generate reports and visualizations. This source can be a file, webpage, database, or another application or service.
+Power BI accommodates both local and cloud-based data sources, allowing connections to sources on the same computer/server as well as those stored in other servers (cloud). These connections enable the extraction of necessary data.
+
+![data sources](https://windsor.ai/wp-content/uploads/2023/12/powerbi-data-sources.png.webp)
+
+2. **Power BI Desktop** - In Power BI, a data source refers to the entity from which data is extracted to generate reports and visualizations. This source can be a file, webpage, database, or another application or service.
+Power BI accommodates both local and cloud-based data sources, allowing connections to sources on the same computer/server as well as those stored in other servers (cloud). These connections enable the extraction of necessary data.
+
+![data sources]([https://windsor.ai/wp-content/uploads/2023/12/powerbi-data-sources.png.webp](https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)
+
+3. **Power BI Services** - The Power BI Service is a Cloud-based or Software-as-a-Service (SaaS) offering of Power BI. It allows teams and organisations to edit reports and collaborate on them. Connecting to data sources in the Power BI service is also possible, but modelling is limited. The Power BI service is used to create dashboards, create and share apps, analyse and explore data to uncover business insights, and much more.
+
+![data sources]([[https://windsor.ai/wp-content/uploads/2023/12/powerbi-data-sources.png.webp](https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png](https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)
+
+3. **Power BI Services** - The Power BI Service is a Cloud-based or Software-as-a-Service (SaaS) offering of Power BI. It allows teams and organisations to edit reports and collaborate on them. Connecting to data sources in the Power BI service is also possible, but modelling is limited. The Power BI service is used to create dashboards, create and share apps, analyse and explore data to uncover business insights, and much more.
+
+![data sources]([[https://windsor.ai/wp-content/uploads/2023/12/powerbi-data-sources.png.webp](https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png)https://k21academy.com/wp-content/uploads/2021/07/Screenshot-55.png](https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)https://learn.microsoft.com/en-us/power-bi/fundamentals/media/service-basic-concepts/completenewest.png)
