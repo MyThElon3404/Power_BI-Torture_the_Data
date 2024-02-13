@@ -33,22 +33,17 @@
 
 ![Line Chart](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/Screenshot-2023-12-07-at-3.51.04-PM.png)
 
-  
-**1.** _Clustered Bar Chart_ - This is the most common type of bar chart, where bars are grouped for each category, allowing for easy comparison of values within the same category.
+- **Pie Charts:** A pie chart is a circular chart divided into slices, where each slice represents a data category and its size corresponds to the percentage it contributes to the whole. Pie charts are best suited for visualizing data with a few categories (5-7 ideally) and highlighting the contribution of each category to the total.
+
+**1.** _Simple Pie Chart_ - Displays a single data series with each slice representing a category.
        
-![Clustered Bar Chart](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/Screenshot-2023-12-07-at-3.44.19-PM.png)
+![Simple Pie Chart](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/Screenshot-2023-12-07-at-3.55.27-PM.png)
 
-**2.** _Stacked Bar Chart_ - In this chart, the bars are stacked vertically, representing the contribution of each category to a total value. This is useful for visualizing the composition of a whole and identifying the dominant categories.
-       
-![Stacked Bar Chart](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/Screenshot-2023-12-07-at-3.48.03-PM.png)
+**2.** _Doughnut Chart_ - Similar to a pie chart, but with a blank space in the center. This allows for additional information like a title or an image to be displayed within the chart.
 
-**3.** _100% Stacked Bar Chart_ - Similar to the stacked bar chart, the bars always sum up to 100%, making it ideal for showing percentages and proportions.
-       
-![Stacked Bar Chart](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/Screenshot-2023-12-07-at-3.49.38-PM.png)
+![Doughnut Chart](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/Screenshot-2023-12-07-at-3.58.55-PM.png)
 
-
-
-
+- **Pie Charts:** A pie chart is a circular chart divided into slices, where each slice represents a data category and its size corresponds to the percentage it contributes to the whole. Pie charts are best suited for visualizing data with a few categories (5-7 ideally) and highlighting the contribution of each category to the total.
 
 
 
