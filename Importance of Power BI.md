@@ -34,12 +34,24 @@ Power BI accommodates both local and cloud-based data sources, allowing connecti
 
 ![Power BI Desktop](https://k21academy.com/wp-content/uploads/2021/09/2021-09-16-17_14_38-Window-1024x550.png)
 
-3. **Power BI Services** - The Power BI Service is a Cloud-based or Software-as-a-Service (SaaS) offering of Power BI. It allows teams and organisations to edit reports and collaborate on them. Connecting to data sources in the Power BI service is also possible, but modelling is limited. The Power BI service is used to create dashboards, create and share apps, analyse and explore data to uncover business insights, and much more.
+3. **Power BI Services** - The Power BI Service is a Cloud-based or Software-as-a-Service (SaaS) offering of Power BI. It allows teams and organizations to edit reports and collaborate on them. Connecting to data sources in the Power BI service is also possible, but modeling is limited. The Power BI service is used to create dashboards, create and share apps, analyze and explore data to uncover business insights, and much more.
 
 ![Power BI Services](https://msdynamicsnavashwinitripathi.files.wordpress.com/2016/08/realtimesync-1.jpg)
 
-4. **Power BI Gateway** - Power BI gateway is a software that can connect and access the data sources stored locally on-premises. It can help the businesses who keep the data in the local databases behind the firewall but wish to use Microsoft cloud services.
+4. **Power BI Gateway** - Power BI gateway is software that can connect and access the data sources stored locally on-premises. It can help businesses that keep the data in the local databases behind the firewall but wish to use Microsoft Cloud services.
 
 ![data sources](https://acquiscent.com/wp-content/uploads/2021/01/Power-BI-Gateway-1-845x321.png)
 
-5. **Report/Dashboard Access** - Here we share or give access to customer or our team members
+5. **Report/Dashboard Access** - Here we share or give access to customers or our team members
+
+# **_Keys point in Power BI:_**
+
+**_Data Visualization:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Just%20Power%20BI%20Things/Data%20Visualization/Visualization%20in%20Power%20BI.md
+
+
+
+
+
+
+
+
