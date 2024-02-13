@@ -73,5 +73,5 @@
 
 - **Matrix Cards:** A matrix chart in Power BI is a versatile visualization tool used to display and compare data across various categories and measures. It combines the functionality of a table and a chart, offering a concise and interactive way to analyze complex datasets.
   
-![Map Chart](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/Screenshot-2023-12-08-at-2.45.41-PM.png)
+![Map Chart](https://i.ytimg.com/vi/KhPHWNd8b5k/maxresdefault.jpg)
 
