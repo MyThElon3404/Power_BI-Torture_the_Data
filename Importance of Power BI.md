@@ -46,8 +46,7 @@ Power BI accommodates both local and cloud-based data sources, allowing connecti
 
 # **_Keys point in Power BI:_**
 
-**_Data Visualization:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Just%20Power%20BI%20Things/Data%20Visualization/Visualization%20in%20Power%20BI.md
-
+**_Data Visualization:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Visualization/Visualization%20in%20Power%20BI.md
 
 
 
