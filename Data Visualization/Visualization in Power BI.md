@@ -3,4 +3,4 @@
 ![Visual](https://www.pragmatiq.co.uk/app/uploads/2020/03/power-bi-dashboard.png)
 
 # _To know more about data visualization:_ 
-Follow this Charts and Visuals - https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Just%20Power%20BI%20Things/Data%20Visualization/Charts%20and%20Visuals%20in%20Power%20BI.md
+Follow this Charts and Visuals - https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Visualization/Charts%20and%20Visuals%20in%20Power%20BI.md
