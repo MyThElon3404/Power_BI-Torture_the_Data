@@ -6,4 +6,4 @@ The following advantages are provided by a good data model: **Faster data explor
 ![Data Modelling](https://learn.microsoft.com/en-us/power-bi/transform-model/media/desktop-modeling-view/modeling-view_05.png)
 
 # _To know more about data Modelling:_ 
-Follow this - https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Visualization/Charts%20and%20Visuals%20in%20Power%20BI.md
+Follow this - https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Modelling/Data%20Modelling%20in%20Power%20BI
