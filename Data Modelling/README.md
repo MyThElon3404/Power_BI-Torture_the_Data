@@ -7,3 +7,12 @@ The following advantages are provided by a good data model: **Faster data explor
 
 # _To know more about data Modelling:_ 
 Follow this - https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Modelling/Data%20Modelling%20in%20Power%20BI
+
+##### ==========================================
+#### **_To know more about data modeling refer to this links:_** 
+IBM -> https://www.ibm.com/topics/data-modeling
+
+Vertabelo -> https://vertabelo.com/blog/data-modeling-techniques/
+
+Hevo -> https://hevodata.com/learn/power-bi-data-model/
+##### ==========================================
