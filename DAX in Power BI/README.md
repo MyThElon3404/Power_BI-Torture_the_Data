@@ -15,6 +15,7 @@ Let’s look at the syntax of DAX formulae before you start making your own. A f
 - DAX is a powerful formula language that can be used to handle data modelling, add value to data, and visualize measures in Power BI. This tutorial has provided an overview of the basics of DAX, the components of a DAX expression, and the types of DAX measures. We have also discussed the detailed steps to create calculated columns and measures in Power BI.
 
 ### **_To know more about DAX:_**
+https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/DAX%20in%20Power%20BI/Exploring%20Power%20of%20DAX
 
 
 
