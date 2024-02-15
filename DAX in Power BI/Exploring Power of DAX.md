@@ -80,6 +80,16 @@ DAX formulas are used in measures, calculated columns, calculated tables, and ro
 
 - DAX is a powerful formula language that can be used to handle data modeling, add value to data, and visualize measures in Power BI. This tutorial has provided an overview of the basics of DAX, the components of a DAX expression, and the types of DAX measures. We have also discussed the detailed steps to create calculated columns and measures in Power BI.
 
+## **_CALCULATE TABLE_**
+- CALCULATETABLE is a DAX Function that evaluates a table expression in a context that has been modified by the given filters. It returns a value table. It is used to create Power BI calculated tables. The table expression to be evaluated is expression>. It is not possible to use a measure as an expression.
+- Power BI Calculated tables come at a price: they expand the model’s storage space and can slow down data refresh. The reason for this is that when calculated tables have formula dependencies on refreshed tables, they recalculate. External data cannot be connected to a Power BI calculated table; instead, you must use Power Query.
+
+![Calculated columns](https://i0.wp.com/sqlskull.com/wp-content/uploads/2020/06/Dax_Calculate.png?w=1001&ssl=1)
+
+![Calculated columns](https://learn.microsoft.com/en-us/power-bi/transform-model/media/desktop-calculated-tables/calctables_westregionempl.png)
+
+**_To know more about Calculated columns_** -> https://dax.guide/calculatetable/
+
 **_To learn more about DAX_** -> https://dax.guide/
 Here you get all DAX functions, formulae, and many more.
 
