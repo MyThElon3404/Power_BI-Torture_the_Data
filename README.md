@@ -4,4 +4,4 @@
 
 ![name-of-you-image](https://easycourses.in/filescab/courses/powerbi.jpeg)
 
-**_Let's begin the power BI journey:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Importance%20of%20Power%20BI.md
+## **_Let's begin the Power BI journey:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Importance%20of%20Power%20BI.md
