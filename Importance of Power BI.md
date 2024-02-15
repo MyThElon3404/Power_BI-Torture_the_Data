@@ -46,17 +46,17 @@ Power BI accommodates both local and cloud-based data sources, allowing connecti
 
 # **_Keys point in Power BI:_**
 
-**_Data Visualization:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Visualization/Visualization%20in%20Power%20BI.md
+- **_Data Visualization:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Visualization/Visualization%20in%20Power%20BI.md
 
-**_Data Modelling:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Modelling/README.md
+- **_Data Modelling:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Modelling/README.md
 
-**_Power BI service:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/tree/main/Power%20BI%20Services
+- **_Power BI service:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/tree/main/Power%20BI%20Services
 
-**_Data Discovery and Transformation:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Discovery%20and%20Transformation/README.md
+- **_Data Discovery and Transformation:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Discovery%20and%20Transformation/README.md
 
-**_Data Administration:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Administration/README.md
+- **_Data Administration:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/Data%20Administration/README.md
 
-**_DAX in Power BI:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/DAX%20in%20Power%20BI/README.md
+- **_DAX in Power BI:_** https://github.com/MyThElon3404/Power_BI-Torture_the_Data/blob/main/DAX%20in%20Power%20BI/README.md
 
 
 
