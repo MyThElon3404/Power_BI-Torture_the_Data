@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "bank_loan_data",
+          "nodeLineageTag": "bd5abb98-d360-4de0-a096-5c793d2ec430",
+          "size": {
+            "height": 677.77777777777783,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 427.77777777777771,
+            "y": 0
+          },
+          "nodeIndex": "Date Table",
+          "nodeLineageTag": "234c0602-6fd3-4e03-a291-dce8843eb73f",
+          "size": {
+            "height": 208.88888888888886,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 739.55555555555543,
+            "y": 0
+          },
+          "nodeIndex": "Measure Table",
+          "nodeLineageTag": "41b5a2b0-9939-4246-a23e-5351bdecbb5f",
+          "size": {
+            "height": 677.75,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1023.5555555555554,
+            "y": 262.88888888888891
+          },
+          "nodeIndex": "Select Measure",
+          "nodeLineageTag": "06c0d79e-bb0b-46d6-b121-80bbad407737",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 77.919463087248317,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

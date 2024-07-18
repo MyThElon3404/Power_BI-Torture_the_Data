@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../PBI - Bank Loan Dataset Analysis Project.Dataset"
+    },
+    "byConnection": null
+  }
+}
