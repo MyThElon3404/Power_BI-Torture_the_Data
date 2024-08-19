@@ -22,5 +22,17 @@
   		DistinctCount Measure = DISTINCTCOUNT(Maths_State_Funct[Price])
 - ### Iterator Functions -
 Iterator functions in DAX (Data Analysis Expressions) are a category of functions that evaluate an expression for each row of a table and then aggregate the results. Unlike simple aggregation functions like SUM or AVERAGE, which operate on entire columns, iterator functions work row by row, allowing for more complex calculations.
+
+- ### SUMX - Sums up the results of an expression evaluated for each row in a table.
+		SUMX Funct = SUMX(Maths_State_Funct, Maths_State_Funct[Price]*Maths_State_Funct[Quantity])
+- ### AVERAGEX - Averages the results of an expression evaluated for each row in a table.
+  		Average Sales Per Transaction = AVERAGEX(Table, Table[Sales])
+- ### MAX/MIN - Finds the maximum or minimum value in a column.
+		Max Profit = MAXX(Table, Table[Sales] - Table[Quantity])
+		Min Profit = MINX(Table, Table[Sales] - Table[Quantity])
+- ### DIVIDE - Divides two numbers, with an option to specify an alternate result if the denominator is zero.
+		AVG Price per Unit = DIVIDE([Total Sales], SUM(Maths_State_Funct[Quantity]))
+- ### COUNTX - Counts the rows that result from an expression evaluated for each row in a table.
+  		CountX Funct = COUNTAX(Maths_State_Funct, if(Maths_State_Funct[Quantity] > 90, 1, BLANK()))
 		
 </details>
