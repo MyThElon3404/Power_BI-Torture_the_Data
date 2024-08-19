@@ -1,1 +1,1 @@
-Hi
+# DAX Functions with Example
