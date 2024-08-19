@@ -1,6 +1,6 @@
 ## DAX Functions with Example
 
-#### - MATHs & STATs Functions ->
+- #### MATHs & STATs Functions ->
 <details>
   <summary> Click Here for Functions </summary>
 
