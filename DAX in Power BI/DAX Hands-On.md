@@ -69,11 +69,7 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
   		FullNameWithSpace = COMBINEVALUES(" ", Orders[FirstName], Orders[LastName])
 - #### FORMAT - Converts a value to text according to a specified format.
 		FormattedDate = FORMAT(Orders[OrderDate], "DD/MM/YYYY")
-- #### LEFT/MID/RIGHT -
-  	- LEFT: Extracts a specified number of characters from the start.
-  	- LeftPart = LEFT(Orders[ProductCode], 3)
-	- MID: Extracts characters from the middle.
-	- RIGHT: Extracts a specified number of characters from the end.
+- #### LEFT/MID/RIGHT - Extracts a specified number of characters from the start / Extracts characters from the middle / Extracts a specified number of characters from the end.
  		LeftPart = LEFT(Orders[ProductCode], 3)
 		MidPart = MID(Orders[ProductCode], 2, 3)
 		RightPart = RIGHT(Orders[ProductCode], 4)
