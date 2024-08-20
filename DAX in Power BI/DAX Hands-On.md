@@ -73,13 +73,48 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
  		LeftPart = LEFT(Orders[ProductCode], 3)
 		MidPart = MID(Orders[ProductCode], 2, 3)
 		RightPart = RIGHT(Orders[ProductCode], 4)
-
-
-- #### SWITCH - The SWITCH function evaluates an expression against a list of values and returns one based on matching results.
-  		CountX Funct = COUNTAX(Maths_State_Funct, if(Maths_State_Funct[Quantity] > 90, 1, BLANK()))
-- #### IFERROR - The IFERROR function returns a specified value if an expression results in an error.
-		DivisionResult = IFERROR(Sales[Total Sales] / Sales[No. of Products], "Error")
-- #### TRUE and FALSE - TRUE and FALSE return the respective logical values.
-		AlwaysTrue = TRUE()
-		AlwaysFalse = FALSE()
+- #### UPPER/LOWER - Converts text to uppercase or lowercase.
+  		UpperCase = UPPER(Orders[ProductName])
+		LowerCase = LOWER(Orders[ProductName])
+- #### LEN - Returns the number of characters in a text string.
+		LengthOfName = LEN(Orders[ProductName])
+- #### SEARCH/FIND - Finds the starting position of a substring within a string.
+		Position = SEARCH("top", Orders[ProductName], 1, 0)
+- #### REPLACE - Replaces part of a text string with another text string.
+  		ReplacedText = REPLACE(Orders[ProductCode], 2, 3, "XYZ")
+- #### SUBSTITUTE - Substitutes old text with new text in a string.
+		SubstitutedText = SUBSTITUTE(Orders[ProductName], "top", "phone")
+- #### TRIM - Removes all spaces from text except for single spaces between words.
+		TrimmedText = TRIM(Orders[ProductName])
 </details>
+
+- #### Filter Functions ->
+<details>
+  <summary> Click Here for Functions </summary>
+
+- #### CALCULATE - The CALCULATE function is one of the most powerful functions in DAX. It modifies the context in which data is filtered and then performs a calculation based on that modified context.
+		Calculate = CALCULATE(SUM('Filter Functions'[Salary]), 'Filter Functions'[Department] = "IT")
+- #### FILTER - The FILTER function returns a table that represents a subset of another table based on a condition.
+  		Filter tb = FILTER('Filter Functions', 'Filter Functions'[Age] > 50)
+- #### ALL - The ALL function removes all filters from a specified column or table. It is often used to create calculations that do not consider any existing filters.
+		All Funct = CALCULATE(SUM('Filter Functions'[Salary]), ALL('Filter Functions'[Department]))
+- #### ALLEXCEPT - The ALLEXCEPT function removes all filters from the specified table or column except for the ones mentioned.
+ 		AllExcept Funct = CALCULATE(SUM('Filter Functions'[Salary]), ALLEXCEPT('Filter Functions', 'Filter Functions'[Department]))
+- #### ALLSELECTED - The ALLSELECTED function returns all rows in a table or all values in a column by ignoring any filters that might have been applied, except for those set by a visual or slicer.
+		AllSelected Funct = CALCULATE(SUM('Filter Functions'[Salary]), ALLSELECTED('Filter Functions'))
+- #### KEEPFILTERS - The KEEPFILTERS function applies a filter on top of an existing filter, ensuring that the new filter is respected.
+  		UpperCase = UPPER(Orders[ProductName])
+		LowerCase = LOWER(Orders[ProductName])
+- #### REMOVEFILTERS - The REMOVEFILTERS function clears any filters that have been applied to the columns or tables specified.
+		Position = SEARCH("top", Orders[ProductName], 1, 0)
+- #### SELECTEDVALUE - The SELECTEDVALUE function returns the value of a column when only one value is selected, or it returns an alternative result when multiple values are selected.
+  		SelectedValue = IF(HASONEVALUE('Filter Functions'[Department]), SUM('Filter Functions'[Salary]), BLANK())
+  		SelectedValue Funct = SELECTEDVALUE('Filter Functions'[Department], "Select a Department")
+- #### HASONEVALUE - The HASONEVALUE function in DAX is used to check whether there is exactly one distinct value in the current filter context for a specified column or expression. It returns a Boolean value: TRUE if there is exactly one distinct value and FALSE otherwise.
+  		SalesInformation = SWITCH(TRUE(), HASONEVALUE(Product[Category]), SUM(Sales[SalesAmount]),
+  			ISFILTERED(Product[Category]), "Multiple Categories Selected",
+    			"No Category Selected")
+- #### ISFILTERED - The ISFILTERED function in DAX checks whether a column or table has been filtered in the current context. It returns a Boolean value: TRUE if the column or table is filtered and FALSE otherwise.
+  		Isfiltered = if(ISFILTERED('Filter Functions'[Department]), "Yes", "No")
+</details>
+
