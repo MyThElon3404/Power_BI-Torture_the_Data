@@ -34,7 +34,6 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 		AVG Price per Unit = DIVIDE([Total Sales], SUM(Maths_State_Funct[Quantity]))
 - ### COUNTX - Counts the rows that result from an expression evaluated for each row in a table.
   		CountX Funct = COUNTAX(Maths_State_Funct, if(Maths_State_Funct[Quantity] > 90, 1, BLANK()))
-		
 </details>
 
 - #### Logical Functions ->
@@ -58,5 +57,32 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 - #### TRUE and FALSE - TRUE and FALSE return the respective logical values.
 		AlwaysTrue = TRUE()
 		AlwaysFalse = FALSE()
-  
+</details>
+
+- #### Text Functions ->
+<details>
+  <summary> Click Here for Functions </summary>
+
+- #### CONCATENATE - Combines two text strings into one.
+		FullName = CONCATENATE(Orders[FirstName], Orders[LastName])
+- #### COMBINEVALUES - Joins multiple text strings with a specified delimiter.
+  		FullNameWithSpace = COMBINEVALUES(" ", Orders[FirstName], Orders[LastName])
+- #### FORMAT - Converts a value to text according to a specified format.
+		FormattedDate = FORMAT(Orders[OrderDate], "DD/MM/YYYY")
+- #### LEFT/MID/RIGHT -
+  	- LEFT: Extracts a specified number of characters from the start.
+	- MID: Extracts characters from the middle.
+	- RIGHT: Extracts a specified number of characters from the end.
+		LeftPart = LEFT(Orders[ProductCode], 3)
+		MidPart = MID(Orders[ProductCode], 2, 3)
+		RightPart = RIGHT(Orders[ProductCode], 4)
+
+
+- #### SWITCH - The SWITCH function evaluates an expression against a list of values and returns one based on matching results.
+  		CountX Funct = COUNTAX(Maths_State_Funct, if(Maths_State_Funct[Quantity] > 90, 1, BLANK()))
+- #### IFERROR - The IFERROR function returns a specified value if an expression results in an error.
+		DivisionResult = IFERROR(Sales[Total Sales] / Sales[No. of Products], "Error")
+- #### TRUE and FALSE - TRUE and FALSE return the respective logical values.
+		AlwaysTrue = TRUE()
+		AlwaysFalse = FALSE()
 </details>
