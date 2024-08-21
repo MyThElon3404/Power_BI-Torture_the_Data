@@ -1,4 +1,4 @@
-## DAX Functions with Example
+# DAX Functions with Example
 
 - ### MATHs & STATs Functions ->
 <details>
