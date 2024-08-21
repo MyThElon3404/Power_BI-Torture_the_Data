@@ -147,31 +147,12 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 		Topn Funct = TOPN(10, 'Table Function', 'Table Function'[ID], ASC)
 </details>
 
-- #### Table Functions ->
+- #### Relationship Functions ->
 <details>
   <summary> Click Here for Functions </summary>
 
-- #### SUMMARIZE - The SUMMARIZE function creates a summary table for the requested columns of a table. It groups the data by the specified columns and can calculate aggregations.
-		Summarize tb = 
-    			SUMMARIZE('Table Function', 
-        			'Table Function'[Category], 
-        			'Table Function'[SubCategory],
-        			"Total Sales", SUM('Table Function'[SalesAmount]),
-        			"Total Quantity", SUM('Table Function'[QuantitySold])
-    			)
-- #### ADDCOLUMNS - The ADDCOLUMNS function adds calculated columns to a table.
-  		AddColumn tb = 
-    			ADDCOLUMNS('Table Function',
-        			"Profit", 'Table Function'[SalesAmount] - 100
-    			)
-- #### DISTINCT - The DISTINCT function returns a one-column table that contains the distinct values from the specified column.
-		Distinct Funct = DISTINCT('Table Function'[Category])
-- #### VALUES - The VALUES function returns a one-column table that contains the distinct values in a column or a one-row table that contains the distinct values in the columns.
- 		Value Funct = VALUES('Table Function'[Category]) 
-- #### UNION - The UNION function combines two or more tables by combining their rows.
-		Union Funct = UNION('Table Function', 'Filter Functions')
-- #### INTERSECT - The INTERSECT function returns a table that contains only the rows that are present in both tables.
-  		Intersect tb = INTERSECT('Table Function', 'Logical Functions')
-- #### TOPN - The TOPN function returns the top N rows of a table, based on a specified expression.
-		Topn Funct = TOPN(10, 'Table Function', 'Table Function'[ID], ASC)
+- #### RELATED Function (Calculated Column) - The RELATED function in Power BI DAX is a powerful tool that allows you to fetch related data from another table based on an existing relationship between the tables. It is particularly useful in scenarios where you want to enrich your data model by pulling in additional details from a related table.
+		Price = RELATED(Products_Relationship_F1[Price])
+- #### RELATEDTABLE Function - The RELATEDTABLE function in Power BI DAX is used to retrieve a table containing all rows from a related table that are associated with the current row. It is particularly useful when you have a one-to-many relationship and you want to aggregate or analyze related rows from the "many" side of the relationship.
+  		OrderCount = COUNTROWS(RELATEDTABLE(Orders_Relationship_F2))
 </details>
