@@ -156,3 +156,39 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 - #### RELATEDTABLE Function - The RELATEDTABLE function in Power BI DAX is used to retrieve a table containing all rows from a related table that are associated with the current row. It is particularly useful when you have a one-to-many relationship and you want to aggregate or analyze related rows from the "many" side of the relationship.
   		OrderCount = COUNTROWS(RELATEDTABLE(Orders_Relationship_F2))
 </details>
+
+- ### Date & Time Functions
+<details>
+  <summary> Click Here for Functions </summary>
+
+- #### DATE - Creates a date in datetime format from individual year, month, and day values.
+		Date Funct = DATE(2024, 8, 20)
+- #### DATEDIFF - Returns the difference between two dates in specified units (e.g., days, months, years).
+  		DateDiff Funct = DATEDIFF([StartDate], [EndDate], DAY)
+- #### YEAR/MONTH/DAY - Extracts the year, month, or day from a date.
+		Year Funct = YEAR([StartDate])
+  		Month Funct = MONTH([StartDate])
+		Day Funct = Day([StartDate])
+- #### HOUR - Extracts the hour from a time value.
+ 		Hour Funct = HOUR(NOW())
+- #### TODAY/NOW - Returns the current date (TODAY) or current date and time (NOW).
+		Today Funct = = TODAY()
+- #### WEEKDAY Number - Returns the day of the week corresponding to a date.
+  		WeekDay Funct = WEEKDAY('Date Time Function'[StartDate], 2)
+- #### WEEKNUM - Returns the week number for a date.
+		WeekNum Funct = WEEKNUM('Date Time Function'[StartDate], 2)
+- #### NETWORKDAYS - Returns the number of whole working days between two dates.
+ 		NETWORKDAYS Funct = NETWORKDAYS = NETWORKDAYS('Date Time Function'[StartDate], 'Date Time Function'[EndDate])
+
+- ### Time Intelligence Functions
+
+- #### DATESYTD - Returns a table that contains a column of the dates for the year to date.
+		DatesYTD = DATESYTD('Date Time Function'[StartDate])
+- #### DATESMTD - Returns a table containing the dates in the month to date.
+  		DatesMTD = DATESMTD('Date Time Function'[StartDate].[Date])
+- #### DATEADD - Returns a table with a shifted set of dates by a specified interval.
+		DATEADD = DATEADD('Date Time Function'[EndDate], -1, YEAR)
+- #### DATESBETWEEN - Returns a table with dates between a specified start and end date.
+  		DATESBETWEEN = DATESBETWEEN('Date Time Function'[StartDate], DATE(2020, 01, 01), DATE(2022, 01, 01))
+
+</details>
