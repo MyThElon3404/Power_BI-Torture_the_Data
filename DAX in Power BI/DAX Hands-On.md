@@ -1,6 +1,6 @@
 # DAX Functions with Example
 
-- ### MATHs & STATs Functions:
+- ### MATHs & STATs Functions
 <details>
   					<summary> Click Here for Functions </summary>
 
@@ -20,7 +20,7 @@
   		CountA Measure = COUNTA(Maths_State_Funct[Quantity])
 		CountRow Measure = COUNTROWS(Maths_State_Funct)
   		DistinctCount Measure = DISTINCTCOUNT(Maths_State_Funct[Price])
-- ### Iterator Functions:
+- ### Iterator Functions
 Iterator functions in DAX (Data Analysis Expressions) are a category of functions that evaluate an expression for each row of a table and then aggregate the results. Unlike simple aggregation functions like SUM or AVERAGE, which operate on entire columns, iterator functions work row by row, allowing for more complex calculations.
 
 - #### SUMX - Sums up the results of an expression evaluated for each row in a table.
@@ -36,7 +36,7 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
   		CountX Funct = COUNTAX(Maths_State_Funct, if(Maths_State_Funct[Quantity] > 90, 1, BLANK()))
 </details>
 
-- ### Logical Functions:
+- ### Logical Functions
 <details>
   <summary> Click Here for Functions </summary>
 
@@ -59,7 +59,7 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 		AlwaysFalse = FALSE()
 </details>
 
-- ### Text Functions:
+- ### Text Functions
 <details>
   <summary> Click Here for Functions </summary>
 
@@ -88,7 +88,7 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 		TrimmedText = TRIM(Orders[ProductName])
 </details>
 
-- ### Filter Functions:
+- ### Filter Functions
 <details>
   <summary> Click Here for Functions </summary>
 
@@ -118,7 +118,7 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
   		Isfiltered = if(ISFILTERED('Filter Functions'[Department]), "Yes", "No")
 </details>
 
-- ### Table Functions:
+- ### Table Functions
 <details>
   <summary> Click Here for Functions </summary>
 
@@ -147,7 +147,7 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 		Topn Funct = TOPN(10, 'Table Function', 'Table Function'[ID], ASC)
 </details>
 
-- ### Relationship Functions:
+- ### Relationship Functions
 <details>
   <summary> Click Here for Functions </summary>
 
