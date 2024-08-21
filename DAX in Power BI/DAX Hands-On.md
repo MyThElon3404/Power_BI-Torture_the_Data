@@ -118,3 +118,43 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
   		Isfiltered = if(ISFILTERED('Filter Functions'[Department]), "Yes", "No")
 </details>
 
+- #### Table Functions ->
+<details>
+  <summary> Click Here for Functions </summary>
+
+- #### SUMMARIZE - The SUMMARIZE function creates a summary table for the requested columns of a table. It groups the data by the specified columns and can calculate aggregations.
+		Summarize tb = 
+    			SUMMARIZE('Table Function', 
+        			'Table Function'[Category], 
+        			'Table Function'[SubCategory],
+        			"Total Sales", SUM('Table Function'[SalesAmount]),
+        			"Total Quantity", SUM('Table Function'[QuantitySold])
+    			)
+- #### ADDCOLUMNS - The ADDCOLUMNS function adds calculated columns to a table.
+  		AddColumn tb = 
+    			ADDCOLUMNS('Table Function',
+        			"Profit", 'Table Function'[SalesAmount] - 100
+    			)
+- #### DISTINCT - The DISTINCT function returns a one-column table that contains the distinct values from the specified column.
+		All Funct = CALCULATE(SUM('Filter Functions'[Salary]), ALL('Filter Functions'[Department]))
+- #### ALLEXCEPT - The ALLEXCEPT function removes all filters from the specified table or column except for the ones mentioned.
+ 		AllExcept Funct = CALCULATE(SUM('Filter Functions'[Salary]), ALLEXCEPT('Filter Functions', 'Filter Functions'[Department]))
+- #### ALLSELECTED - The ALLSELECTED function returns all rows in a table or all values in a column by ignoring any filters that might have been applied, except for those set by a visual or slicer.
+		AllSelected Funct = CALCULATE(SUM('Filter Functions'[Salary]), ALLSELECTED('Filter Functions'))
+- #### KEEPFILTERS - The KEEPFILTERS function applies a filter on top of an existing filter, ensuring that the new filter is respected.
+  		UpperCase = UPPER(Orders[ProductName])
+		LowerCase = LOWER(Orders[ProductName])
+- #### REMOVEFILTERS - The REMOVEFILTERS function clears any filters that have been applied to the columns or tables specified.
+		Position = SEARCH("top", Orders[ProductName], 1, 0)
+- #### SELECTEDVALUE - The SELECTEDVALUE function returns the value of a column when only one value is selected, or it returns an alternative result when multiple values are selected.
+  		SelectedValue = IF(HASONEVALUE('Filter Functions'[Department]), SUM('Filter Functions'[Salary]), BLANK())
+  		SelectedValue Funct = SELECTEDVALUE('Filter Functions'[Department], "Select a Department")
+- #### HASONEVALUE - The HASONEVALUE function in DAX is used to check whether there is exactly one distinct value in the current filter context for a specified column or expression. It returns a Boolean value: TRUE if there is exactly one distinct value and FALSE otherwise.
+  		SalesInformation = SWITCH(TRUE(), HASONEVALUE(Product[Category]), SUM(Sales[SalesAmount]),
+  			ISFILTERED(Product[Category]), "Multiple Categories Selected",
+    			"No Category Selected")
+- #### ISFILTERED - The ISFILTERED function in DAX checks whether a column or table has been filtered in the current context. It returns a Boolean value: TRUE if the column or table is filtered and FALSE otherwise.
+  		Isfiltered = if(ISFILTERED('Filter Functions'[Department]), "Yes", "No")
+</details>
+
+
