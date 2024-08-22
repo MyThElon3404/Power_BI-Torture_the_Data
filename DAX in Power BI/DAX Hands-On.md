@@ -193,38 +193,101 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 
 </details>
 
-- ### Date & Time Functions
+- ### VAR & RETURN
+#### In Power BI DAX (Data Analysis Expressions), VAR and RETURN are used to define and work with variables within a DAX formula. They help simplify complex calculations and improve readability. 
 <details>
-  <summary> Click Here for Functions </summary>
+  <summary> Click Here </summary>
 
-- #### DATE - Creates a date in datetime format from individual year, month, and day values.
-		Date Funct = DATE(2024, 8, 20)
-- #### DATEDIFF - Returns the difference between two dates in specified units (e.g., days, months, years).
-  		DateDiff Funct = DATEDIFF([StartDate], [EndDate], DAY)
-- #### YEAR/MONTH/DAY - Extracts the year, month, or day from a date.
-		Year Funct = YEAR([StartDate])
-  		Month Funct = MONTH([StartDate])
-		Day Funct = Day([StartDate])
-- #### HOUR - Extracts the hour from a time value.
- 		Hour Funct = HOUR(NOW())
-- #### TODAY/NOW - Returns the current date (TODAY) or current date and time (NOW).
-		Today Funct = = TODAY()
-- #### WEEKDAY Number - Returns the day of the week corresponding to a date.
-  		WeekDay Funct = WEEKDAY('Date Time Function'[StartDate], 2)
-- #### WEEKNUM - Returns the week number for a date.
-		WeekNum Funct = WEEKNUM('Date Time Function'[StartDate], 2)
-- #### NETWORKDAYS - Returns the number of whole working days between two dates.
- 		NETWORKDAYS Funct = NETWORKDAYS = NETWORKDAYS('Date Time Function'[StartDate], 'Date Time Function'[EndDate])
+- #### VAR (Variable) - Define a variable to store an intermediate value or result within a DAX formula.
+		VAR <VariableName> = <Expression>
+		Total Sales = 
+			VAR TotalAmount = SUM(Sales[Amount])
+			VAR TotalQuantity = SUM(Sales[Quantity])
+			RETURN
+				TotalAmount / TotalQuantity
 
-- ### Time Intelligence Functions
+- #### RETURN - Specify the final expression or calculation to be evaluated and returned as the result of the formula.
+  		RETURN <Expression>
+		Average Sales per Unit = 
+			VAR TotalSalesAmount = SUM(Sales[Amount])
+			VAR TotalUnits = SUM(Sales[Quantity])
+			RETURN
+				TotalSalesAmount / TotalUnits
+- ### Example 1: Calculating Profit Margin
+	- Suppose you have a table Sales with columns Revenue and Cost. You want to calculate the profit margin.
 
-- #### DATESYTD - Returns a table that contains a column of the dates for the year to date.
-		DatesYTD = DATESYTD('Date Time Function'[StartDate])
-- #### DATESMTD - Returns a table containing the dates in the month to date.
-  		DatesMTD = DATESMTD('Date Time Function'[StartDate].[Date])
-- #### DATEADD - Returns a table with a shifted set of dates by a specified interval.
-		DATEADD = DATEADD('Date Time Function'[EndDate], -1, YEAR)
-- #### DATESBETWEEN - Returns a table with dates between a specified start and end date.
-  		DATESBETWEEN = DATESBETWEEN('Date Time Function'[StartDate], DATE(2020, 01, 01), DATE(2022, 01, 01))
+dax
+Copy code
+Profit Margin (%) = 
+VAR TotalRevenue = SUM(Sales[Revenue])
+VAR TotalCost = SUM(Sales[Cost])
+VAR Profit = TotalRevenue - TotalCost
+RETURN
+IF(TotalRevenue > 0, (Profit / TotalRevenue) * 100, 0)
+TotalRevenue and TotalCost are variables holding the sum of Revenue and Cost, respectively.
+Profit calculates the difference between Revenue and Cost.
+The RETURN statement calculates the profit margin as a percentage and ensures that the calculation only occurs if TotalRevenue is greater than zero.
+Example 2: Year-to-Date (YTD) Sales
+You want to calculate the year-to-date sales for the current year.
+
+dax
+Copy code
+YTD Sales = 
+VAR CurrentYear = YEAR(TODAY())
+VAR SalesYTD = 
+    CALCULATE(
+        SUM(Sales[Amount]),
+        DATESYTD(Sales[Date])
+    )
+RETURN
+IF(YEAR(MAX(Sales[Date])) = CurrentYear, SalesYTD, BLANK())
+CurrentYear stores the current year.
+SalesYTD calculates the year-to-date sales using the DATESYTD function.
+The RETURN statement ensures that YTD sales are only shown for the current year.
+Example 3: Average Sales per Customer
+You want to calculate the average sales per customer.
+
+dax
+Copy code
+Average Sales per Customer = 
+VAR TotalSales = SUM(Sales[Amount])
+VAR CustomerCount = DISTINCTCOUNT(Sales[CustomerID])
+RETURN
+IF(CustomerCount > 0, TotalSales / CustomerCount, 0)
+TotalSales holds the sum of Amount from the Sales table.
+CustomerCount calculates the number of distinct customers.
+The RETURN statement computes the average sales per customer, ensuring that the result is only calculated if there are customers.
+Example 4: Total Sales with Adjustments
+Suppose you want to calculate total sales, including a 5% adjustment.
+
+dax
+Copy code
+Adjusted Sales = 
+VAR TotalSales = SUM(Sales[Amount])
+VAR AdjustmentFactor = 1.05
+RETURN
+TotalSales * AdjustmentFactor
+TotalSales calculates the total sales amount.
+AdjustmentFactor represents a 5% increase.
+The RETURN statement applies the adjustment factor to the total sales amount.
+Example 5: Sales Growth from Last Year
+You want to calculate the growth in sales compared to the previous year.
+
+dax
+Copy code
+Sales Growth (%) = 
+VAR CurrentYearSales = SUM(Sales[Amount])
+VAR PreviousYearSales = 
+    CALCULATE(
+        SUM(Sales[Amount]),
+        SAMEPERIODLASTYEAR(Sales[Date])
+    )
+VAR Growth = CurrentYearSales - PreviousYearSales
+RETURN
+IF(PreviousYearSales > 0, (Growth / PreviousYearSales) * 100, 0)
+CurrentYearSales stores the sum of sales for the current period.
+PreviousYearSales calculates the sum of sales for the same period last year using SAMEPERIODLASTYEAR.
+Growth computes the difference between current and previous year sales.
+The RETURN statement calculates the sales growth percentage, ensuring it's only shown if there were sales in the previous year.
 
 </details>
