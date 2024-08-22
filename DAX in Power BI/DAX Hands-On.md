@@ -281,3 +281,5 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 	- The RETURN statement calculates the sales growth percentage, ensuring it's only shown if there were sales in the previous year.
 
 </details>
+
+- #### DAX by ChatGPT - https://chatgpt.com/share/d4a256b7-e8c4-405e-ab70-cc83b4b14437
