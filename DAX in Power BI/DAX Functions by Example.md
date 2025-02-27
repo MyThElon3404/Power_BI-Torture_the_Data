@@ -94,6 +94,42 @@ SUMMARIZECOLUMNS (
     table[column]
 )
 
+### 12. PRODUCT - Returns the product of given column reference.
+- Syntax - PRODUCT ( table[column] )
+
+### 13. PRODUCTX - Returns the product of an expression values in a table.
+- Syntax - PRODUCTX (
+    table,
+    table[column]
+)
+
+- ## Example -
+```dax
+DEFINE
+    MEASURE Sales[MAX_Price] = MAX ( Sales[Net Price] )
+    MEASURE Sales[MAXX_Price] = MAXX ( Sales, Sales[Net Price] )
+    MEASURE Sales[MIN_Price] = MIN ( Sales[Net Price] )
+    MEASURE Sales[MINX_Price] = MINX ( Sales, Sales[Net Price] )
+    MEASURE Sales[PRODUCT_Price] = CALCULATE ( PRODUCT ( Sales[Net Price] ), Sales[Quantity] < 3 )
+    MEASURE Sales[PRODUCTX_Price] = CALCULATE ( PRODUCTX ( Sales, Sales[Net Price] ), Sales[Quantity] < 3 )
+    MEASURE Sales[SUM_Price] = SUM ( Sales[Net Price] )
+    MEASURE Sales[SUMX_Price] = SUMX ( Sales, Sales[Net Price] )
+
+EVALUATE
+SUMMARIZECOLUMNS (
+    'Product'[Color],
+    "Max_Price", [MAX_Price],
+    "MaxX_Price", [MAXX_Price],
+    "Min_Price", [MIN_Price],
+    "MinX_Price", [MINX_Price],
+    "Product_Price", [PRODUCT_Price],
+    "ProductX_Price", [PRODUCTX_Price],
+    "Sum_Price", [SUM_Price],
+    "SumX_Price", [SUMX_Price]
+)
+
+```
+
 </details>
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
