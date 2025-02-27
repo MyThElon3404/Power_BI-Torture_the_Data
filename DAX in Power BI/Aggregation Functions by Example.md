@@ -5,7 +5,8 @@ Aggregation functions return a scalar value by applying an aggregation function 
 - Returns the average (arithmetic mean) of all the numbers in a column.
 - Syntax - AVERAGE ( table[column] )
 
-### 2. AVERAGEX - Calculates the average (arithmetic mean) of a set of expressions evaluated over a table.
+### 2. AVERAGEX 
+- Calculates the average (arithmetic mean) of a set of expressions evaluated over a table.
 - Syntax -
 AVERAGEX (
     table,
@@ -29,25 +30,30 @@ SUMMARIZECOLUMNS (
 ORDER BY 'Date'[Calendar Year Number] ASC
 ```
 
-### 3. COUNT - Counts the number of rows in the table where the specified column has a non-blank value.
+### 3. COUNT 
+- Counts the number of rows in the table where the specified column has a non-blank value.
 - Syntax - COUNT ( table[column] )
 
-### 4. COUNTX - Counts the number of values which result from evaluating an expression for each row of a table.
+### 4. COUNTX 
+- Counts the number of values which result from evaluating an expression for each row of a table.
 - Syntax -
 COUNTX (
     table,
     table[column]
 )
 
-### 5. COUNTROWS - Counts the number of rows in a table.
+### 5. COUNTROWS 
+- Counts the number of rows in a table.
 - Syntax - COUNTROWS ( table )
 - COUNTROWS ( DISTINCT ( table ) )
 - COUNTROWS ( VALUES ( table ) )
 
-### 6. COUNTBLANK - Counts the number of blanks in a column.
+### 6. COUNTBLANK 
+- Counts the number of blanks in a column.
 - Syntax - COUNTBLANK ( 'Table'[Column] )
 
-### 7. DISTINCTCOUNT - Counts the number of distinct values in a column.
+### 7. DISTINCTCOUNT 
+- Counts the number of distinct values in a column.
 - Syntax - DISTINCTCOUNT ( table[column] )
 - COUNTROWS ( DISTINCT ( table[column] ) )
 
@@ -73,28 +79,34 @@ SUMMARIZECOLUMNS (
 )
 ```
 
-### 8. MAX - Returns the largest value in a column, or the larger value between two scalar expressions. Ignores logical values. Strings are compared according to alphabetical order.
+### 8. MAX 
+- Returns the largest value in a column, or the larger value between two scalar expressions. Ignores logical values. Strings are compared according to alphabetical order.
 - Syntax - MAX ( table[column] )
 
-### 9. MAXX - Returns the largest value that results from evaluating an expression for each row of a table. Strings are compared according to alphabetical order.
+### 9. MAXX 
+- Returns the largest value that results from evaluating an expression for each row of a table. Strings are compared according to alphabetical order.
 - Syntax - MAXX (
     table,
     table[column]
 )
 
-### 10. MIN - Returns the smallest value in a column, or the smaller value between two scalar expressions. Ignores logical values. Strings are compared according to alphabetical order.
+### 10. MIN 
+- Returns the smallest value in a column, or the smaller value between two scalar expressions. Ignores logical values. Strings are compared according to alphabetical order.
 - Syntax - MIN ( table[column] )
 
-### 11. MINX - Returns the smallest value that results from evaluating an expression for each row of a table. Strings are compared according to alphabetical order.
+### 11. MINX 
+- Returns the smallest value that results from evaluating an expression for each row of a table. Strings are compared according to alphabetical order.
 - Syntax - MINX (
     table,
     table[column]
 )
 
-### 12. PRODUCT - Returns the product of given column reference.
+### 12. PRODUCT 
+- Returns the product of given column reference.
 - Syntax - PRODUCT ( table[column] )
 
-### 13. PRODUCTX - Returns the product of an expression values in a table.
+### 13. PRODUCTX 
+- Returns the product of an expression values in a table.
 - Syntax - PRODUCTX (
     table,
     table[column]
