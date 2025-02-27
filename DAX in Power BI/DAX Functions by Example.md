@@ -12,7 +12,7 @@ AVERAGEX (
 )
 <details>
 - EXAMPLE - 
-        DEFINE
+``` DEFINE
     MEASURE Sales[AVG Quantity 1] = AVERAGE ( Sales[Quantity] )
     MEASURE Sales[AVG Quantity 2] = AVERAGEX ( Sales, Sales[Quantity] )
     MEASURE Sales[AVG Line Amount] =
@@ -24,12 +24,25 @@ SUMMARIZECOLUMNS (
     "AVG Quantity 2", [AVG Quantity 2],
     "AVG Line Amount", [AVG Line Amount]
 )
+```
 </details>
 
 
 
 - ### SUM - Calculates the total sum of a column. 
-		Total Sales = SUM(Table[Sales])
+		Total DEFINE
+    MEASURE Sales[AVG Quantity 1] = AVERAGE ( Sales[Quantity] )
+    MEASURE Sales[AVG Quantity 2] = AVERAGEX ( Sales, Sales[Quantity] )
+    MEASURE Sales[AVG Line Amount] =
+        AVERAGEX ( Sales, Sales[Quantity] * Sales[Net Price] )
+EVALUATE
+SUMMARIZECOLUMNS (
+    'Product'[Color],
+    "AVG Quantity 1", [AVG Quantity 1],
+    "AVG Quantity 2", [AVG Quantity 2],
+    "AVG Line Amount", [AVG Line Amount]
+)
+  
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
