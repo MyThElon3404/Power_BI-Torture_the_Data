@@ -75,6 +75,25 @@ SUMMARIZECOLUMNS (
     "# Countries 1", [# Countries 1]
 )
 ```
+
+### 8. MAX - Returns the largest value in a column, or the larger value between two scalar expressions. Ignores logical values. Strings are compared according to alphabetical order.
+- Syntax - MAX ( table[column] )
+
+### 9. MAXX - Returns the largest value that results from evaluating an expression for each row of a table. Strings are compared according to alphabetical order.
+- Syntax - MAXX (
+    table,
+    table[column]
+)
+
+### 10. MIN - Returns the smallest value in a column, or the smaller value between two scalar expressions. Ignores logical values. Strings are compared according to alphabetical order.
+- Syntax - MIN ( table[column] )
+
+### 11. MINX - Returns the smallest value that results from evaluating an expression for each row of a table. Strings are compared according to alphabetical order.
+- Syntax - MINX (
+    table,
+    table[column]
+)
+
 </details>
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
