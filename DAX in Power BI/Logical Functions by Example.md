@@ -26,6 +26,7 @@ RETURN
 
 ### 3. COALESCE
 - Returns the first argument that does not evaluate to a blank value. If all arguments evaluate to blank values, BLANK is returned.
+- Syntax - COALESCE ( <Value1>, <Value2> )
 
 - ## Example -
 ```dax
@@ -38,3 +39,33 @@ SELECTCOLUMNS (
         DATEDIFF ( Store[Open Date], COALESCE ( Store[Close Date], TODAY () ), YEAR ) 
 )
 ```
+
+### 4. IF
+- Checks whether a condition is met, and returns one value if TRUE, and another value if FALSE.
+- Syntax - IF ( <LogicalTest>, <ResultIfTrue> )
+
+- ## Example -
+```dax
+EVALUATE
+ADDCOLUMNS (
+    VALUES ( 'Product'[Brand] ),
+    "Sales 1", [Sales Amount],
+    "Sales 2",
+        VAR SalesAmount = [Sales Amount]
+        RETURN
+            IF ( SalesAmount > 3000000, 3000000, SalesAmount ),
+    "Sales 3", MIN ( [Sales Amount], 3000000 )
+)
+ORDER BY 'Product'[Brand]
+```
+
+### 5. SWITCH
+- Returns different results depending on the value of an expression.
+- Syntax - SWITCH(
+    expression,           -- The value to evaluate
+    value1, result1,      -- If expression = value1, return result1
+    value2, result2,      -- If expression = value2, return result2
+    value3, result3,      -- If expression = value3, return result3
+    ..., 
+    [else_result]         -- Optional: Default result if no match is found
+)
