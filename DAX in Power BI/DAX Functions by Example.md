@@ -58,6 +58,7 @@ DEFINE
     MEASURE Customer[using countx] = COUNTX ( Customer, Customer[Name] )
     MEASURE Customer[using calculate isblank] = CALCULATE ( COUNTROWS ( Customer ), NOT ISBLANK ( Customer[Name] ) )
     MEASURE Customer[distinct cust] = DISTINCTCOUNT ( Customer[Name] )
+    MEASURE Customer[# Countries 1] = COUNTROWS ( DISTINCT ( Customer[CountryRegion] ) )
 
 EVALUATE
 SUMMARIZECOLUMNS (
@@ -66,7 +67,8 @@ SUMMARIZECOLUMNS (
     "CustName Count", [using count],
     "CustName CountX", [using countx],
     "CustName calculate isblank", [using calculate isblank],
-    "Distinct Customer", [distinct cust]
+    "Distinct Customer", [distinct cust],
+    "# Countries 1", [# Countries 1]
 )
 ```
 
