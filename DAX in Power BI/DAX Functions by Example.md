@@ -1,8 +1,5 @@
-# DAX Functions with Example
-
-- ## MATHs & STATs Functions
-<details>
-  					<summary> Click Here for Functions </summary>
+- # Aggregation Functions -
+- Aggregation functions return a scalar value by applying an aggregation function to a column or to an expression evaluated by iterating a table expression.
 
 - ### SUM - Calculates the total sum of a column. 
 		Total Sales = SUM(Table[Sales])
@@ -34,7 +31,6 @@ Iterator functions in DAX (Data Analysis Expressions) are a category of function
 		AVG Price per Unit = DIVIDE([Total Sales], SUM(Maths_State_Funct[Quantity]))
 - #### COUNTX - Counts the rows that result from an expression evaluated for each row in a table.
   		CountX Funct = COUNTAX(Maths_State_Funct, if(Maths_State_Funct[Quantity] > 90, 1, BLANK()))
-</details>
 
 - ## Logical Functions
 <details>
