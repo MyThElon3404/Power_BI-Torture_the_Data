@@ -12,7 +12,7 @@ AVERAGEX (
 )
 <details>
 - EXAMPLE - 
-``` DEFINE
+DEFINE
     MEASURE Sales[AVG Quantity 1] = AVERAGE ( Sales[Quantity] )
     MEASURE Sales[AVG Quantity 2] = AVERAGEX ( Sales, Sales[Quantity] )
     MEASURE Sales[AVG Line Amount] =
@@ -24,7 +24,7 @@ SUMMARIZECOLUMNS (
     "AVG Quantity 2", [AVG Quantity 2],
     "AVG Line Amount", [AVG Line Amount]
 )
-```
+
 </details>
 
 
@@ -43,6 +43,26 @@ SUMMARIZECOLUMNS (
     "AVG Line Amount", [AVG Line Amount]
 )
   
+# Power BI DAX Measures for Sales Analysis
 
+This file contains DAX measures to calculate average quantities and line amounts for sales data.
+
+## DAX Code
+
+```dax
+DEFINE
+    MEASURE Sales[AVG Quantity 1] = AVERAGE ( Sales[Quantity] )
+    MEASURE Sales[AVG Quantity 2] = AVERAGEX ( Sales, Sales[Quantity] )
+    MEASURE Sales[AVG Line Amount] =
+        AVERAGEX ( Sales, Sales[Quantity] * Sales[Net Price] )
+
+EVALUATE
+SUMMARIZECOLUMNS (
+    'Product'[Color],
+    "AVG Quantity 1", [AVG Quantity 1],
+    "AVG Quantity 2", [AVG Quantity 2],
+    "AVG Line Amount", [AVG Line Amount]
+)
+```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
