@@ -3,11 +3,11 @@ Logical functions act upon an expression, to return information about the values
 
 ### 1. AND (&&)
 - Checks whether all arguments are TRUE, and returns TRUE if all arguments are TRUE.
-- Syntax - AND(<expression>, <expression>)
+- Syntax - AND( expression1, expression2)
 
 ### 2. OR (||)
 - Returns TRUE if any of the arguments are TRUE, and returns FALSE if all arguments are FALSE.
-- Syntax - OR(<expression>, <expression>)
+- Syntax - OR(expression1, expression2)
 
 - ## Example -
 ```dax
@@ -26,7 +26,7 @@ RETURN
 
 ### 3. COALESCE
 - Returns the first argument that does not evaluate to a blank value. If all arguments evaluate to blank values, BLANK is returned.
-- Syntax - COALESCE ( <Value1>, <Value2> )
+- Syntax - COALESCE ( Value1, Value2 )
 
 - ## Example -
 ```dax
@@ -42,7 +42,7 @@ SELECTCOLUMNS (
 
 ### 4. IF
 - Checks whether a condition is met, and returns one value if TRUE, and another value if FALSE.
-- Syntax - IF ( <LogicalTest>, <ResultIfTrue> )
+- Syntax - IF ( LogicalTest, ResultIfTrue )
 
 - ## Example -
 ```dax
@@ -62,10 +62,22 @@ ORDER BY 'Product'[Brand]
 ### 5. SWITCH
 - Returns different results depending on the value of an expression.
 - Syntax - SWITCH(
-    expression,           -- The value to evaluate
-    value1, result1,      -- If expression = value1, return result1
-    value2, result2,      -- If expression = value2, return result2
-    value3, result3,      -- If expression = value3, return result3
-    ..., 
-    [else_result]         -- Optional: Default result if no match is found
+    expression,
+    value1, result1,
+    value2, result2,
 )
+
+- ## Example -
+```dax
+EVALUATE
+ADDCOLUMNS (
+    VALUES ( 'Product'[Brand] ),
+    "Sales 1", [Sales Amount],
+    "Sales 2",
+        VAR SalesAmount = [Sales Amount]
+        RETURN
+            IF ( SalesAmount > 3000000, 3000000, SalesAmount ),
+    "Sales 3", MIN ( [Sales Amount], 3000000 )
+)
+ORDER BY 'Product'[Brand]
+```
