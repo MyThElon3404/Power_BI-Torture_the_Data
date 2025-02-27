@@ -1,5 +1,5 @@
 - # Aggregation Functions -
-- Aggregation functions return a scalar value by applying an aggregation function to a column or to an expression evaluated by iterating a table expression.
+Aggregation functions return a scalar value by applying an aggregation function to a column or to an expression evaluated by iterating a table expression.
 
 - ### SUM - Calculates the total sum of a column. 
 		Total Sales = SUM(Table[Sales])
