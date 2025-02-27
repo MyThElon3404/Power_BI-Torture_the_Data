@@ -13,18 +13,19 @@ AVERAGEX (
 - ## Example -
 ```dax
 DEFINE
-    MEASURE Sales[AVG Quantity 1] = AVERAGE ( Sales[Quantity] )
-    MEASURE Sales[AVG Quantity 2] = AVERAGEX ( Sales, Sales[Quantity] )
-    MEASURE Sales[AVG Line Amount] =
-        AVERAGEX ( Sales, Sales[Quantity] * Sales[Net Price] )
+    MEASURE Sales[AVG Quantity1] = AVERAGE ( Sales[Quantity] )
+    MEASURE Sales[AVG Quantity2] = AVERAGEX ( Sales, Sales[Quantity] )
+    MEASURE Sales[AVG Sales Amount] = AVERAGEX ( Sales, Sales[Quantity] * Sales[Net Price] )
 
 EVALUATE
 SUMMARIZECOLUMNS (
-    'Product'[Color],
-    "AVG Quantity 1", [AVG Quantity 1],
-    "AVG Quantity 2", [AVG Quantity 2],
-    "AVG Line Amount", [AVG Line Amount]
+    'Date'[Calendar Year Number],
+    "AVG Quantity1", [AVG Quantity1],
+    "AVG Quantity2", [AVG Quantity2],
+    "AVG Sales Amount", [AVG Sales Amount],
+    "Sales Amount", [Sales Amount]
 )
+ORDER BY 'Date'[Calendar Year Number] ASC
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
