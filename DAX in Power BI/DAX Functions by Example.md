@@ -46,26 +46,28 @@ COUNTX (
 ### 6. COUNTBLANK - Counts the number of blanks in a column.
 - Syntax - COUNTBLANK ( 'Table'[Column] )
 
-### 3. DISTINCTCOUNT - Counts the number of distinct values in a column.
+### 7. DISTINCTCOUNT - Counts the number of distinct values in a column.
 - Syntax - DISTINCTCOUNT ( table[column] )
 - COUNTROWS ( DISTINCT ( table[column] ) )
 
 - ## Example -
 ```dax
 DEFINE
-    MEASURE Sales[AVG Quantity1] = AVERAGE ( Sales[Quantity] )
-    MEASURE Sales[AVG Quantity2] = AVERAGEX ( Sales, Sales[Quantity] )
-    MEASURE Sales[AVG Sales Amount] = AVERAGEX ( Sales, Sales[Quantity] * Sales[Net Price] )
+    MEASURE Customer[customers] = COUNTROWS ( Customer )
+    MEASURE Customer[using count] = COUNT ( Customer[Name] )
+    MEASURE Customer[using countx] = COUNTX ( Customer, Customer[Name] )
+    MEASURE Customer[using calculate isblank] = CALCULATE ( COUNTROWS ( Customer ), NOT ISBLANK ( Customer[Name] ) )
+    MEASURE Customer[distinct cust] = DISTINCTCOUNT ( Customer[Name] )
 
 EVALUATE
 SUMMARIZECOLUMNS (
-    'Date'[Calendar Year Number],
-    "AVG Quantity1", [AVG Quantity1],
-    "AVG Quantity2", [AVG Quantity2],
-    "AVG Sales Amount", [AVG Sales Amount],
-    "Sales Amount", [Sales Amount]
+    Customer[Continent],
+    "Total Customers", [customers],
+    "CustName Count", [using count],
+    "CustName CountX", [using countx],
+    "CustName calculate isblank", [using calculate isblank],
+    "Distinct Customer", [distinct cust]
 )
-ORDER BY 'Date'[Calendar Year Number] ASC
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
