@@ -2,6 +2,7 @@
 Aggregation functions return a scalar value by applying an aggregation function to a column or to an expression evaluated by iterating a table expression.
 
 <details>
+    
 ### 1. AVERAGE - Returns the average (arithmetic mean) of all the numbers in a column.
 - Syntax - AVERAGE ( table[column] )
 
