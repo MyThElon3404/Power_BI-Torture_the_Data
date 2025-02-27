@@ -12,7 +12,7 @@ AVERAGEX (
 )
 <details>
 - EXAMPLE - 
-DEFINE
+        DEFINE
     MEASURE Sales[AVG Quantity 1] = AVERAGE ( Sales[Quantity] )
     MEASURE Sales[AVG Quantity 2] = AVERAGEX ( Sales, Sales[Quantity] )
     MEASURE Sales[AVG Line Amount] =
