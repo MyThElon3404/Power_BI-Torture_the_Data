@@ -138,6 +138,7 @@ FILTER (
     Table,
     Filter Expression
 )
+
 - ## Example -
 ```dax
 DEFINE
