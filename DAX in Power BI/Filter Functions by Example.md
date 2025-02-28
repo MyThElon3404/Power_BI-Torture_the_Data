@@ -6,7 +6,7 @@ Filter functions manipulate table and filter contexts.
 - Syntax - ALL ( Customer )
 ALL ( Customer[Country], Customer[State] , Customer[City] )
 
-- ## Example -
+## Example -
 ```dax
 DEFINE
     MEASURE Sales[color Sales Amount] =
@@ -39,7 +39,7 @@ SUMMARIZECOLUMNS (
 - Returns all the rows in a table except for those rows that are affected by the specified column filters.
 - Syntax - ALLEXCEPT(TableName, ColumnName1, ColumnName2)
 
-- ## Example -
+## Example -
 ```dax
 DEFINE
     MEASURE Sales[Color_Wise] =
@@ -67,7 +67,7 @@ SUMMARIZECOLUMNS (
 - Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied inside the query, but keeping filters that come from outside.
 - Syntax - ALLSELECTED(Table_or_ColumnsName, ColumnName)
 
-- ## Example -
+## Example -
 ```dax
 EVALUATE
 CALCULATETABLE (
@@ -121,7 +121,7 @@ CALCULATETABLE (
     )
 )
 
-- ## Example -
+## Example -
 ```dax
 -- Returns the colors of Proseware branded products
 EVALUATE
@@ -139,7 +139,7 @@ FILTER (
     Filter Expression
 )
 
-- ## Example -
+## Example -
 ```dax
 DEFINE
     MEASURE Sales[Red Sales] =
@@ -163,7 +163,7 @@ SUMMARIZECOLUMNS (
 - Changes the CALCULATE and CALCULATETABLE function filtering semantics.
 - Syntax - KEEPFILTERS ( Filter Expression )
   
-- ## Example -
+## Example -
 ```dax
 DEFINE
     MEASURE Sales[Red Sales] =
