@@ -93,7 +93,7 @@ SUMMARIZECOLUMNS (
     "discounted sales amount", [discounted sales]
 )
 
--- Method 2 -
+-- Method 2 - Using Always TRUE in Switch statement
 DEFINE
     MEASURE Sales[Discounted Sales] =
         SUMX (
