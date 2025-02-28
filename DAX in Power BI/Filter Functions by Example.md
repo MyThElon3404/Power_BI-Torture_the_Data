@@ -159,26 +159,24 @@ SUMMARIZECOLUMNS (
 )
 ```
 
-### 6. KEEPFILTERS
+### 7. KEEPFILTERS
 - Changes the CALCULATE and CALCULATETABLE function filtering semantics.
 - Syntax - KEEPFILTERS ( Filter Expression )
   
 ## Example -
 ```dax
 DEFINE
-    MEASURE Sales[Red Sales] =
-        SUMX (
-            FILTER ( Sales, RELATED ( Product[Color] ) = "Red" ),
-            Sales[Quantity] * Sales[Net Price]
-        )
-    MEASURE Sales[Red Sales CALCULATE] =
-        CALCULATE ( [Sales Amount], KEEPFILTERS ( Product[Color] = "Red" ) )
+    MEASURE Sales[White Sales] =
+        CALCULATE ( [Sales Amount], Product[Color] = "White" )
+    MEASURE Sales[White Sales Keep] =
+        CALCULATE ( [Sales Amount], KEEPFILTERS ( Product[Color] = "White" ) )
 
 EVALUATE
-SUMMARIZECOLUMNS (
-    Product[Brand],
-    "Sales", [Sales Amount],
-    "Red Sales", [Red Sales],
-    "Red Sales CALCULATE", [Red Sales CALCULATE]
+ADDCOLUMNS (
+    VALUES ( 'Product'[Color] ),
+    "Sales Amount", [Sales Amount],
+    "White Sales", [White Sales],
+    "White Sales Keep", [White Sales Keep]
 )
+ORDER BY [Sales Amount] DESC
 ```
