@@ -69,15 +69,52 @@ ORDER BY 'Product'[Brand]
 
 - ## Example -
 ```dax
+-- Method 1 -
+DEFINE
+    MEASURE Sales[discounted sales] =
+        SUMX (
+            VALUES ( 'Product'[Category] ),
+            VAR disc_PC =
+                SWITCH (
+                    'Product'[Category],
+                    "Audio", 0.15,
+                    "Computer", 0.2,
+                    "Cell Phones", 0.13,
+                    0
+                )
+            RETURN
+                [Sales Amount] * ( 1 - disc_PC )
+        )
+
 EVALUATE
-ADDCOLUMNS (
-    VALUES ( 'Product'[Brand] ),
-    "Sales 1", [Sales Amount],
-    "Sales 2",
-        VAR SalesAmount = [Sales Amount]
-        RETURN
-            IF ( SalesAmount > 3000000, 3000000, SalesAmount ),
-    "Sales 3", MIN ( [Sales Amount], 3000000 )
+SUMMARIZECOLUMNS (
+    'Product'[Category],
+    "Sales Amount", [Sales Amount],
+    "discounted sales amount", [discounted sales]
 )
-ORDER BY 'Product'[Brand]
+
+-- Method 2 -
+DEFINE
+    MEASURE Sales[Discounted Sales] =
+        SUMX (
+            SUMMARIZE ( Sales, Sales[Net Price], Product[Category] ),
+            VAR DiscountPct =
+                SWITCH (
+                    TRUE,
+                    Sales[Net Price] <= 150, 0.15,
+                    Sales[Net Price] <= 1000, 0.2,
+                    Product[Category] = "Audio", 0.13,
+                    0
+                )
+            RETURN
+                [Sales Amount] * ( 1 - DiscountPct )
+        )
+
+EVALUATE
+SUMMARIZECOLUMNS (
+    'Product'[Category],
+    "Sales Amount", [Sales Amount],
+    "Discounted sales", [Discounted Sales]
+)
+ORDER BY [Category]
 ```
