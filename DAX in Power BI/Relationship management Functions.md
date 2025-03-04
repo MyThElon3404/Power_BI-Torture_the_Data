@@ -1,37 +1,24 @@
-# Filter Functions
-Filter functions manipulate table and filter contexts.
+# Relationship management Functions
+These functions manage and manipulate relationships between tables.
 
-### 1. ALL
-- Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied.
-- Syntax - ALL ( Customer )
-ALL ( Customer[Country], Customer[State] , Customer[City] )
+### 1. RELATED
+- Returns a related value from another table.
+- Syntax - RELATED( ColumnName )
+- NOTE - The RELATED function requires that a regular relationship exists between the current table and the table with related information. The argument specifies a column reference, and the function follows a chain of one or more many-to-one relationships to fetch the value from the specified column in the related table. If a relationship does not exist, RELATED raises an error. 
 
 ## Example -
 ```dax
 DEFINE
-    MEASURE Sales[color Sales Amount] =
-        CALCULATE ( SUMX ( Sales, [Sales Amount] ), ALL ( 'Product'[Color] ) )
-    MEASURE Sales[Red Sales Amount] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            FILTER ( ALL ( 'Product'[Color] ), 'Product'[Color] = "Red" )
-        )
-    MEASURE Sales[ONLY Red Sales Amount] =
-        IF (
-            SELECTEDVALUE ( 'Product'[Color] ) = "Red",
-            CALCULATE (
-                SUMX ( Sales, [Sales Amount] ),
-                FILTER ( ALL ( 'Product'[Color] ), 'Product'[Color] = "Red" )
-            ),
-            0
-        )
+    MEASURE Sales[Sales Amount] =
+        SUMX ( Sales, Sales[Quantity] * Sales[Net Price] )
+    MEASURE Sales[Sales at List Price] =
+        SUMX ( Sales, Sales[Quantity] * RELATED ( 'Product'[List Price] ) )
+
 EVALUATE
 SUMMARIZECOLUMNS (
-    'Product'[Color],
-    "Color Sales Amount", [color Sales Amount],
+    'Date'[Calendar Year],
     "Sales Amount", [Sales Amount],
-    "Red Sales Amount", [Red Sales Amount],
-    "ONLY Red Sales Amount", [ONLY Red Sales Amount]
+    "Sales at List Price", [Sales at List Price]
 )
 ```
 
