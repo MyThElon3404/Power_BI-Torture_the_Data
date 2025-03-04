@@ -19,100 +19,76 @@ FILTER (
 )
 ```
 
-### 2. ALLEXCEPT
-- Returns all the rows in a table except for those rows that are affected by the specified column filters.
-- Syntax - ALLEXCEPT(TableName, ColumnName1, ColumnName2)
+### 2. DISTINCT
+- Returns a one column table that contains the distinct (unique) values in a column, for a column argument. Or multiple columns with distinct (unique) combination of values, for a table expression argument.
+- Syntax - DISTINCT(ColumnExpression OR TableExpression)
 
 ## Example -
 ```dax
-DEFINE
-    MEASURE Sales[Color_Wise] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            ALLEXCEPT ( 'Product', 'Product'[Color] )
-        )
-    MEASURE Sales[PC_Wise] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            ALLEXCEPT ( 'Product', 'Product'[Category] )
-        )
 EVALUATE
 SUMMARIZECOLUMNS (
-    'Product'[Category],
-    'Product'[Color],
-    "Sales Amount", [Sales Amount],
-    "Color_Wise", [Color_Wise],
-    "PC_Wise", [PC_Wise]
+    Store[Continent],
+    "Store with no blank value", COUNTROWS ( DISTINCT ( Store[Store Name] ) ),
+    "Store with blank value", COUNTROWS ( VALUES ( Store[Store Name] ) ),
+    "#Stores", COUNTROWS ( Store ),
+    "#Stores (no blank row)", COUNTROWS ( DISTINCT ( Store ) ),
+    "#Stores (blank row)", COUNTROWS ( VALUES ( Store ) )
 )
-
 ```
 
-### 3. ALLSELECTED
-- Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied inside the query, but keeping filters that come from outside.
-- Syntax - ALLSELECTED(Table_or_ColumnsName, ColumnName)
+### 3. EXCEPT
+- Returns the rows of left-side table which do not appear in right-side table.
+- Syntax - EXCEPT(LeftTable, RightTable)
 
 ## Example -
 ```dax
 EVALUATE
-CALCULATETABLE (
-    ADDCOLUMNS (
-        ALL ( 'Product'[Category] ),
-        "Sales Amount", [Sales Amount],
-        "Sales Sel",
-            CALCULATE (
-                [Sales Amount],
-                ALLSELECTED ( Product[Category] )
-            )
-    ),
-    Product[Category] IN { "Audio", "Computer" }
-)
+VAR Days = VALUES ( 'Date'[Day of Week] )
+VAR WeekEndDays = { "Saturday", "Sunday" }
+VAR WorkingDays = EXCEPT ( Days, WeekEndDays )
+RETURN
+    ADDCOLUMNS ( 
+        WorkingDays, 
+        "Store Sales", [Sales Amount] 
+    )
 ```
 
-### 4. CALCULATE
-- Evaluates an expression in a context modified by filters.
-- Syntax - CALCULATE(Expression, Filters)
+### 4. FILTERS
+- Returns a table of the filter values applied directly to the specified column.
+- Syntax - FILTERS(ColumnName)
 
 - ## Example -
 ```dax
-DEFINE
-    MEASURE Sales[Red Blue Sales Keepfilters] =
-        CALCULATE (
-            [Sales Amount],
-            KEEPFILTERS ( 'Product'[Color] IN { "Red", "Blue" } )
-        )
-    MEASURE Sales[Red Blue Sales] =
-        CALCULATE (
-            [Sales Amount],
-            'Product'[Color] IN { "Red", "Blue" }
-        )
 EVALUATE
-SUMMARIZECOLUMNS (
-    'Product'[Color],
-    "Sales Amount", [Sales Amount],
-    "Red Blue Sales", [Red Blue Sales],
-    "Red Blue Sales Keepfilters", [Red Blue Sales Keepfilters]
+CALCULATETABLE (
+    FILTERS ('Product'[Category]),
+    'Product'[Color] = "Red"
 )
 ```
 
-### 5. CALCULATETABLE
-- Evaluates a table expression in a context modified by filters.
-- Syntax -
-CALCULATETABLE (
-    <table_expression>,
-    FILTER (
-        ALL ( table[column] ),
-        table[column] = 10
-    )
-)
+### 5. GROUPBY
+- Creates a summary the input table grouped by the specified columns.
+- Syntax - GROUPBY(Table, GroupBY_ColumnName, Name, Expression)
 
 ## Example -
 ```dax
--- Returns the colors of Proseware branded products
+DEFINE
+    VAR AverageCustomerSales = AVERAGEX ( Customer, [Sales Amount] )
+    VAR TaggedCustomers =
+        SUMMARIZECOLUMNS (
+            Customer[CustomerKey],
+            "Customer Category", 
+                IF ( [Sales Amount] > AverageCustomerSales, "Above Average", "Below Average" )
+        )
+    VAR Result =
+        GROUPBY (
+            TaggedCustomers,
+            [Customer Category],
+            "Customer Count", COUNTX ( CURRENTGROUP (), 1 )
+        )
+
 EVALUATE
-CALCULATETABLE (
-    VALUES ( 'Product'[Color] ),
-    'Product'[Brand] = "Proseware"
-)
+Result
 ```
 
 ### 6. FILTER
