@@ -1,182 +1,214 @@
 # Text Functions
 Text functions manipulate strings.
 
-### 1. ALL
-- Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied.
-- Syntax - ALL ( Customer )
-ALL ( Customer[Country], Customer[State] , Customer[City] )
+### 1. COMBINEVALUES
+- Combines the given set of operands using a specified delimiter.
+- Syntax - COMBINEVALUES(Delimiter, Expression1, Expression2)
+
+## Example -
+```dax
+EVALUATE
+ADDCOLUMNS (
+    SUMMARIZE (
+        TOPN ( 5, Customer ),
+        Customer[Customer Code],
+        Customer[Customer Name],
+        Customer[CountryRegion]
+    ),
+    "Name, Code, and Country combined",
+        COMBINEVALUES (
+            " | ",
+            Customer[Customer Name],
+            Customer[Customer Code],
+            Customer[CountryRegion]
+        )
+)
+```
+
+### 2. CONCATENATE
+- Joins two text strings into one text string.
+- Syntax - CONCATENATE(Table, Expression, Delimiter, OrderBY_Expression, order(ASC, DESC))
+
+## Example -
+```dax
+EVALUATE
+ADDCOLUMNS (
+    SUMMARIZE (
+        TOPN ( 5, Customer ),
+        Customer[Customer Code],
+        Customer[Customer Name]
+    ),
+    "Name and Code 1", CONCATENATE ( Customer[Customer Name], Customer[Customer Code] ),
+    "Name and Code 2", Customer[Customer Name] & Customer[Customer Code]
+)
+```
+
+### 3. CONCATENATEX
+- Evaluates expression for each row on the table, then return the concatenation of those values in a single string result, seperated by the specified delimiter.
+- Syntax - CONCATENATEX(Table_or_ColumnsName, ColumnName)
+
+## Example -
+```dax
+EVALUATE
+ADDCOLUMNS (
+    VALUES ( 'Product'[Category] ),
+    "Category colors",
+        CONCATENATEX (
+            CALCULATETABLE ( VALUES ( 'Product'[Color] ) ),
+            Product[Color],
+            ", ",             -- Separator (optional)
+            Product[Color],   -- Sorting expression (optional)
+            ASC               -- Sorting direction (optional)
+        )
+)
+```
+
+### 4. FIND
+- Returns the starting position of one text string within another text string. FIND is case-sensitive and accent-sensitive.
+- Syntax - FIND(FindText, WithinText, StartPosition, NotFindValue)
+
+- ## Example -
+```dax
+EVALUATE
+CALCULATETABLE (
+    ADDCOLUMNS (
+        TOPN ( 5, VALUES ( 'Product'[Product Name] ) ),
+        "Position of Red", FIND ( "Red", 'Product'[Product Name], 1, BLANK () )
+    ),
+    'Product'[Color] IN { "Red", "Blue" }
+)
+```
+
+### 5. FORMAT
+- Converts a value to text in the specified number format.
+- Syntax - FORMAT(Value, Format)
+
+## Example -
+```dax
+EVALUATE
+{
+    ( "Percent",      FORMAT (                0.742, "Percent" )        ),
+    ( "Currency (1)", FORMAT (             1234.567, "$#,0.00" )        ),
+    ( "Currency (2)", FORMAT (             1234.567, """US$"" #,0.00" ) ),
+    ( "Date (1)",     FORMAT ( DATE ( 2019, 3, 28 ), "yyyy-mm-dd" )     ),
+    ( "Date (2)",     FORMAT ( DATE ( 2019, 3, 28 ), "m/d/yy" )         ),
+    ( "Date (Q)",     FORMAT ( DATE ( 2019, 3, 28 ), "\QQ yyyy" )       )
+}
+```
+
+### 6. LEFT
+- Returns the specified number of characters from the start of a text string.
+- Syntax - LEFT(Text, NumberOfCharactors)
+
+### 7. RIGHT
+- Returns the specified number of characters from the end of a text string.
+- Syntax - LEFT(Text, NumberOfCharactors)
+
+### 8. MID
+- Returns a string of characters from the middle of a text string, given a starting position and length.
+- Syntax - MID(Text, StartPosition, NumberOfCharactors)
+
+### 9. LEN
+- Returns the number of characters in a text string.
+- Syntax - LEN(Text)
 
 ## Example -
 ```dax
 DEFINE
-    MEASURE Sales[color Sales Amount] =
-        CALCULATE ( SUMX ( Sales, [Sales Amount] ), ALL ( 'Product'[Color] ) )
-    MEASURE Sales[Red Sales Amount] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            FILTER ( ALL ( 'Product'[Color] ), 'Product'[Color] = "Red" )
-        )
-    MEASURE Sales[ONLY Red Sales Amount] =
-        IF (
-            SELECTEDVALUE ( 'Product'[Color] ) = "Red",
-            CALCULATE (
-                SUMX ( Sales, [Sales Amount] ),
-                FILTER ( ALL ( 'Product'[Color] ), 'Product'[Color] = "Red" )
-            ),
-            0
-        )
+    VAR Val = "DAX is so cool!"
 EVALUATE
-SUMMARIZECOLUMNS (
-    'Product'[Color],
-    "Color Sales Amount", [color Sales Amount],
-    "Sales Amount", [Sales Amount],
-    "Red Sales Amount", [Red Sales Amount],
-    "ONLY Red Sales Amount", [ONLY Red Sales Amount]
-)
+{
+    ( "LEFT ( Val, 3 ) ",   LEFT  ( Val, 3     ) ),
+    ( "RIGHT ( Val, 5 )",   RIGHT ( Val, 5     ) ),
+    ( "MID ( Val, 11, 4 )", MID   ( Val, 11, 4 ) ),
+    ( "LEN ( Val )",        LEN   ( Val        ) )
+}
 ```
 
-### 2. ALLEXCEPT
-- Returns all the rows in a table except for those rows that are affected by the specified column filters.
-- Syntax - ALLEXCEPT(TableName, ColumnName1, ColumnName2)
+### 10. LOWER
+- Converts all letters in a text string to lowercase.
+- Syntax - LOWER ( TEXT )
+
+### 11. UPPER
+- Converts all letters in a text string to uppercase.
+- Syntax - UPPER ( TEXT )
+  
+## Example -
+```dax
+DEFINE
+    VAR Val = "DAX is so cool!"
+
+EVALUATE
+{
+    ( "Original = " & Val ),
+    ( "UPPER = " & UPPER ( Val ) ),
+    ( "LOWER = " & LOWER ( Val ) )
+}=
+```
+
+### 12. REPLACE
+- Replaces part of a text string with a different text string.
+- Syntax - REPLACE(OldText, StartPosition, NumberOfchar, NewText)
 
 ## Example -
 ```dax
 DEFINE
-    MEASURE Sales[Color_Wise] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            ALLEXCEPT ( 'Product', 'Product'[Color] )
-        )
-    MEASURE Sales[PC_Wise] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            ALLEXCEPT ( 'Product', 'Product'[Category] )
-        )
+    VAR Val = "DAX is so cool !"
+    VAR Replacement = "fantastic"
+
 EVALUATE
-SUMMARIZECOLUMNS (
-    'Product'[Category],
-    'Product'[Color],
-    "Sales Amount", [Sales Amount],
-    "Color_Wise", [Color_Wise],
-    "PC_Wise", [PC_Wise]
-)
+{ ( "Original", Val ), ( "Replaced", REPLACE ( Val, 11, 4, Replacement ) ) }
 
 ```
 
-### 3. ALLSELECTED
-- Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied inside the query, but keeping filters that come from outside.
-- Syntax - ALLSELECTED(Table_or_ColumnsName, ColumnName)
+### 13. SEARCH
+- Returns the starting position of one text string within another text string. SEARCH is not case-sensitive, but it is accent-sensitive.
+- Syntax - SEARCH(FindText, WithinText, StartPosition, NotFoundValue)
+- NOTE - SEARCH supports wildcards, whereas FIND does not.
 
 ## Example -
 ```dax
 EVALUATE
 CALCULATETABLE (
     ADDCOLUMNS (
-        ALL ( 'Product'[Category] ),
-        "Sales Amount", [Sales Amount],
-        "Sales Sel",
-            CALCULATE (
-                [Sales Amount],
-                ALLSELECTED ( Product[Category] )
-            )
+        TOPN ( 5, VALUES ( 'Product'[Product Name] ) ),
+        "player*blue", SEARCH ( "player*blue", 'Product'[Product Name], 1, BLANK () )
     ),
-    Product[Category] IN { "Audio", "Computer" }
+    'Product'[Color] IN { "Red", "Blue" }
 )
 ```
 
-### 4. CALCULATE
-- Evaluates an expression in a context modified by filters.
-- Syntax - CALCULATE(Expression, Filters)
+### 3. TRIM
+- Removes all spaces from a text string except for single spaces between words.
+- Syntax - TRIM( Text )
+
+## Example -
+```dax
+DEFINE
+    VAR Test = "  DAX is          awesome !!!    "
+
+EVALUATE
+{ ( "Original", Test ), ( "Trimmed", TRIM ( Test ) ) }
+```
+
+### 4. VALUE
+- Converts a text string that represents a number to a number.
+- Syntax - VALUE( Text )
 
 - ## Example -
 ```dax
-DEFINE
-    MEASURE Sales[Red Blue Sales Keepfilters] =
-        CALCULATE (
-            [Sales Amount],
-            KEEPFILTERS ( 'Product'[Color] IN { "Red", "Blue" } )
-        )
-    MEASURE Sales[Red Blue Sales] =
-        CALCULATE (
-            [Sales Amount],
-            'Product'[Color] IN { "Red", "Blue" }
-        )
 EVALUATE
-SUMMARIZECOLUMNS (
-    'Product'[Color],
-    "Sales Amount", [Sales Amount],
-    "Red Blue Sales", [Red Blue Sales],
-    "Red Blue Sales Keepfilters", [Red Blue Sales Keepfilters]
-)
-```
-
-### 5. CALCULATETABLE
-- Evaluates a table expression in a context modified by filters.
-- Syntax -
-CALCULATETABLE (
-    <table_expression>,
-    FILTER (
-        ALL ( table[column] ),
-        table[column] = 10
-    )
-)
-
-## Example -
-```dax
--- Returns the colors of Proseware branded products
-EVALUATE
-CALCULATETABLE (
-    VALUES ( 'Product'[Color] ),
-    'Product'[Brand] = "Proseware"
-)
-```
-
-### 6. FILTER
-- Returns a table that has been filtered.
-- Syntax - 
-FILTER (
-    Table,
-    Filter Expression
-)
-
-## Example -
-```dax
-DEFINE
-    MEASURE Sales[Red Sales] =
-        SUMX (
-            FILTER ( Sales, RELATED ( Product[Color] ) = "Red" ),
-            Sales[Quantity] * Sales[Net Price]
-        )
-    MEASURE Sales[Red Sales CALCULATE] =
-        CALCULATE ( [Sales Amount], KEEPFILTERS ( Product[Color] = "Red" ) )
-
-EVALUATE
-SUMMARIZECOLUMNS (
-    Product[Brand],
-    "Sales", [Sales Amount],
-    "Red Sales", [Red Sales],
-    "Red Sales CALCULATE", [Red Sales CALCULATE]
-)
-```
-
-### 7. KEEPFILTERS
-- Changes the CALCULATE and CALCULATETABLE function filtering semantics.
-- Syntax - KEEPFILTERS ( Filter Expression )
-  
-## Example -
-```dax
-DEFINE
-    MEASURE Sales[White Sales] =
-        CALCULATE ( [Sales Amount], Product[Color] = "White" )
-    MEASURE Sales[White Sales Keep] =
-        CALCULATE ( [Sales Amount], KEEPFILTERS ( Product[Color] = "White" ) )
-
-EVALUATE
-ADDCOLUMNS (
-    VALUES ( 'Product'[Color] ),
-    "Sales Amount", [Sales Amount],
-    "White Sales", [White Sales],
-    "White Sales Keep", [White Sales Keep]
-)
-ORDER BY [Sales Amount] DESC
+{
+    ( "INT",            123,                     VALUE ( "123"        ) ),
+    ( "FLOAT",          123.45678,               VALUE ( "123.45678"  ) ),
+    ( "Scientific (1)", 123e3,                   VALUE ( "123e3"      ) ),
+    ( "Scientific (2)", 123e-3,                  VALUE ( "123e-3"     ) ),
+    ( "Date (1)",       DATE ( 2020, 10, 23 ),   VALUE ( "2020-10-23" ) ),
+    ( "Date (2)",       DATE ( 2020, 10, 23 ),   VALUE ( "10/23/2020" ) ),
+    ( "Date (3)",       DATE ( 2020, 10, 23 ),   VALUE ( "23/10/2020" ) ),
+    ( "Time (1)",       TIME ( 10, 23, 45 ),     VALUE ( "10:23:45"   ) ),
+    ( "Time (2)",       TIME ( 18, 05, 00 ),     VALUE ( "18:05:00"   ) ),
+    ( "Time (3)",       TIME ( 18, 05, 00 ),     VALUE ( "6:05:00 pm" ) ),
+    ( "Time (4)",       TIME ( 18, 05, 00 ),     VALUE ( "6:05pm"     ) )
+}
 ```
