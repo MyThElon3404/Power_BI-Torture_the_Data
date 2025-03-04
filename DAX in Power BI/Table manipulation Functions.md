@@ -1,37 +1,21 @@
-# Filter Functions
-Filter functions manipulate table and filter contexts.
+# Table manipulation Functions
+These functions manipulate and return tables.
 
-### 1. ALL
-- Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied.
-- Syntax - ALL ( Customer )
-ALL ( Customer[Country], Customer[State] , Customer[City] )
+### 1. ADDCOLUMNS
+- Returns a table with new columns specified by the DAX expressions.
+- Syntax - ADDCOLUMNS(Table, Name, Expression)
 
 ## Example -
 ```dax
-DEFINE
-    MEASURE Sales[color Sales Amount] =
-        CALCULATE ( SUMX ( Sales, [Sales Amount] ), ALL ( 'Product'[Color] ) )
-    MEASURE Sales[Red Sales Amount] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            FILTER ( ALL ( 'Product'[Color] ), 'Product'[Color] = "Red" )
-        )
-    MEASURE Sales[ONLY Red Sales Amount] =
-        IF (
-            SELECTEDVALUE ( 'Product'[Color] ) = "Red",
-            CALCULATE (
-                SUMX ( Sales, [Sales Amount] ),
-                FILTER ( ALL ( 'Product'[Color] ), 'Product'[Color] = "Red" )
-            ),
-            0
-        )
 EVALUATE
-SUMMARIZECOLUMNS (
-    'Product'[Color],
-    "Color Sales Amount", [color Sales Amount],
-    "Sales Amount", [Sales Amount],
-    "Red Sales Amount", [Red Sales Amount],
-    "ONLY Red Sales Amount", [ONLY Red Sales Amount]
+FILTER (
+    ADDCOLUMNS (
+        VALUES ( 'Date'[Calendar Year Number] ),
+        "Sales Amount", [Sales Amount],
+        "Total Quantity wrong", SUMX ( Sales, Sales[Quantity] ),
+        "TQ using calculate", CALCULATE ( SUM ( Sales[Quantity] ) )
+    ),
+    [Sales Amount] > 0
 )
 ```
 
