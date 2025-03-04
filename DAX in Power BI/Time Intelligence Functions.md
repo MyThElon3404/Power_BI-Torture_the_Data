@@ -203,23 +203,47 @@ EVALUATE
     )
 ```
 
+### 13. NEXTDAY / NEXTMONTH / NEXTQUARTER / NEXTYEAR
+- Returns a next day.
+- Syntax - NEXTDAY( Date )
 
-### 8. BLANK()
-- Returns a blank.
-- Syntax - BLANK()
+### 14. PREVIOUSDAY / PREVIOUSMONTH / PREVIOUSQUARTER / PREVIOUSYEAR
+- Returns a previous day.
+- Syntax - PREVIOUSDAY( Date )
 
-## Example -
+- Example -
 ```dax
-DEFINE
-    MEASURE Customer[EmptyNames] =
-        CALCULATE (
-            COUNTROWS ( Customer ),
-            Customer[Customer Name] == BLANK ()
-        )
 EVALUATE
-SUMMARIZECOLUMNS (
-    Customer[Continent],
-    "Customers", COUNTROWS ( Customer ),
-    "Customers with blank name", [EmptyNames]
+CALCULATETABLE (
+    PREVIOUSDAY ( 'Date'[Date] ),  
+    'Date'[Date] >= DATE ( 2008, 08, 15 ) &&
+    'Date'[Date] <= DATE ( 2008, 08, 20 )
 )
+ORDER BY [Date] ASC
+
+EVALUATE
+CALCULATETABLE (
+    NEXTDAY ( 'Date'[Date] ),  
+    'Date'[Date] >= DATE ( 2008, 08, 15 ) &&
+    'Date'[Date] <= DATE ( 2008, 08, 20 )
+)
+ORDER BY [Date] ASC
+```
+
+### 15. SAMEPERIODLASTYEAR
+- Returns a set of dates in the current selection from the previous year.
+- Syntax - SAMEPERIODLASTYEAR ( Date )
+
+- Example -
+```dax
+EVALUATE
+VAR StartDate = DATE ( 2008, 07, 25 )
+VAR EndDate =   DATE ( 2008, 07, 31 )
+RETURN
+    CALCULATETABLE (
+        SAMEPERIODLASTYEAR ( 'Date'[Date] ),
+        'Date'[Date] >= StartDate &&
+        'Date'[Date] <= EndDate
+    )
+ORDER BY [Date]
 ```
