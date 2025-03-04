@@ -133,7 +133,7 @@ CALCULATETABLE (
 )
 ```
 
-### 1. SUMMARIZE
+### 8. SUMMARIZE
 - Creates a summary of the input table grouped by the specified columns.
 - Syntax - SUMMARIZE(Table, GroupBY_ColumnName, Name, Expression)
 
@@ -151,7 +151,7 @@ CALCULATETABLE (
 )
 ```
 
-### 2. SUMMARIZECOLUMNS
+### 9. SUMMARIZECOLUMNS
 - Create a summary table for the requested totals over set of groups.
 - Syntax - SUMMARIZECOLUMNS(GroupBY_ColumnName, FilterTable, Name, Expression)
 
@@ -168,7 +168,7 @@ SUMMARIZECOLUMNS (
 )
 ```
 
-### 3. TOPN
+### 10. TOPN
 - Returns a given number of top rows according to a specified expression.
 - Syntax - TOPN(N_Value, Table, OrderBY_Expression, Order(ASC, DESC))
 
@@ -186,7 +186,7 @@ TOPN (
 ORDER BY [@Sales Amount] DESC
 ```
 
-### 4. TREATS
+### 11. TREATS
 - Treats the columns of the input table as columns from other tables. For each column, filters out any values that are not present in its respective output column.
 - Syntax - TREATS(Expression, ColumnName)
 
@@ -209,7 +209,7 @@ SUMMARIZECOLUMNS (
 )
 ```
 
-### 5. UNION
+### 12. UNION
 - Returns the union of the tables whose columns match.
 - Syntax - UNION(Table, Table1, Table2)
 
@@ -223,7 +223,7 @@ RETURN
     UnionDays
 ```
 
-### 6. VALUES
+### 13. VALUES
 - When a column name is given, returns a single-column table of unique values. When a table name is given, returns a table with the same columns and all the rows of the table (including duplicates) with the additional blank row caused by an invalid relationship if present.
 - NOTE - VALUES is similar to DISTINCT, but it can have an additional blank row 
 - Syntax - VALUES(TableName OR ColumnName)
@@ -240,27 +240,3 @@ SUMMARIZECOLUMNS (
     "#Stores (blank row)", COUNTROWS ( VALUES ( Store ) )
 )
 ```
-
-### 7. SELECTEDCOLUMNS
-- Returns a table with selected columns from the table and new columns specified by the DAX expressions.
-- Syntax - SELECTEDCOLUMNS(Table, Name, Expression)
-  
-## Example -
-```dax
-EVALUATE
-CALCULATETABLE (
-    SELECTCOLUMNS (
-        Sales,
-        RELATED ( 'Date'[Date] ),
-        Sales[Order Number],
-        Sales[Order Line Number],
-        "Customer", RELATED ( Customer[Name] ),
-        RELATED ( 'Product'[Product Name] ),
-        Sales[Quantity],
-        "Line Amount", Sales[Quantity] * Sales[Unit Price]
-    ),
-    'Date'[Date] = DATE ( 2007, 9, 19 ),
-    Customer[Customer Type] = "Person"
-)
-```
-
