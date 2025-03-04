@@ -22,32 +22,29 @@ SUMMARIZECOLUMNS (
 )
 ```
 
-### 2. ALLEXCEPT
-- Returns all the rows in a table except for those rows that are affected by the specified column filters.
-- Syntax - ALLEXCEPT(TableName, ColumnName1, ColumnName2)
+### 2. RELATEDTABLE
+- Returns the related tables filtered so that it only includes the related rows.
+- Syntax - RELATEDTABLE( Table )
+- NOTE - The RELATEDTABLE function performs a context transition from row context(s) to a filter context, and evaluates the expression in the resulting filter context.
+This function is a shortcut for CALCULATETABLE function with no additional filters, accepting only a table reference and not a table expression.
 
 ## Example -
 ```dax
 DEFINE
-    MEASURE Sales[Color_Wise] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            ALLEXCEPT ( 'Product', 'Product'[Color] )
-        )
-    MEASURE Sales[PC_Wise] =
-        CALCULATE (
-            SUMX ( Sales, [Sales Amount] ),
-            ALLEXCEPT ( 'Product', 'Product'[Category] )
-        )
+    MEASURE Sales[Sales Amount] =
+        SUMX ( Sales, Sales[Quantity] * Sales[Net Price] )
+    MEASURE Sales[TX/Customer w/rel] =
+        AVERAGEX ( Customer, COUNTROWS ( RELATEDTABLE ( Sales ) ) )
+    MEASURE Sales[TX/Customer w/calc] =
+        AVERAGEX ( Customer, COUNTROWS ( CALCULATETABLE ( Sales ) ) )
+ 
 EVALUATE
 SUMMARIZECOLUMNS (
-    'Product'[Category],
-    'Product'[Color],
+    'Date'[Calendar Year],
     "Sales Amount", [Sales Amount],
-    "Color_Wise", [Color_Wise],
-    "PC_Wise", [PC_Wise]
+    "TX/Customer w/rel", [TX/Customer w/rel],
+    "TX/Customer w/calc", [TX/Customer w/calc]
 )
-
 ```
 
 ### 3. ALLSELECTED
