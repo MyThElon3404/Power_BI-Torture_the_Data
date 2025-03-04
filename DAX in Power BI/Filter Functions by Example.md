@@ -179,3 +179,23 @@ ADDCOLUMNS (
 )
 ORDER BY [Sales Amount] DESC
 ```
+
+### 8. BLANK()
+- Returns a blank.
+- Syntax - BLANK()
+
+## Example -
+```dax
+DEFINE
+    MEASURE Customer[EmptyNames] =
+        CALCULATE (
+            COUNTROWS ( Customer ),
+            Customer[Customer Name] == BLANK ()
+        )
+EVALUATE
+SUMMARIZECOLUMNS (
+    Customer[Continent],
+    "Customers", COUNTROWS ( Customer ),
+    "Customers with blank name", [EmptyNames]
+)
+```
