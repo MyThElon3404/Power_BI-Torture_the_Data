@@ -247,3 +247,25 @@ RETURN
     )
 ORDER BY [Date]
 ```
+
+### 16. TOTALMTD / TOTALQTD / TOTALYTD
+- Evaluates the specified expression over the interval which begins on the first of the month and ends with the last date in the specified date column after applying specified filters.
+- Syntax - TOTALMTD ( Expression, Dates [, <Filter>] )
+
+- Example -
+```dax
+EVALUATE
+CALCULATETABLE (
+    { (
+        CALCULATE (           
+            [Sales Amount],
+            DATESMTD ( 'Date'[Date] )  -- 2007-05-01 : 2007-05-06
+        ),
+        TOTALMTD (            -- 2007-05-01 : 2007-05-06
+            [Sales Amount],
+            'Date'[Date]      
+        )
+    ) },
+    'Date'[Date] = DATE ( 2007, 5, 12 )
+)
+```
