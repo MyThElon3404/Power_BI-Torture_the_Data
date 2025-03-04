@@ -176,6 +176,33 @@ CALCULATETABLE (
 )
 ```
 
+### 11. FIRSTDATE
+- Returns first non blank date.
+- Syntax - FIRSTDATE( Date )
+
+### 12. LASTDATE
+- Returns last non blank date.
+- Syntax - LASTDATE( Date )
+
+- Example -
+```dax
+DEFINE
+VAR StartDate = DATE ( 2008, 08, 15 )
+VAR EndDate   = DATE ( 2008, 08, 31 )
+ 
+EVALUATE
+    CALCULATETABLE (
+        FIRSTDATE ( 'Date'[Date] ),
+        'Date'[Date] >= StartDate && 'Date'[Date] <= EndDate
+    )
+     
+EVALUATE
+    CALCULATETABLE (
+        LASTDATE ( 'Date'[Date] ),
+        'Date'[Date] >= StartDate && 'Date'[Date] <= EndDate
+    )
+```
+
 
 ### 8. BLANK()
 - Returns a blank.
