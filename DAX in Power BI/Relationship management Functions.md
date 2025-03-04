@@ -47,49 +47,22 @@ SUMMARIZECOLUMNS (
 )
 ```
 
-### 3. ALLSELECTED
-- Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied inside the query, but keeping filters that come from outside.
-- Syntax - ALLSELECTED(Table_or_ColumnsName, ColumnName)
+### 3. USERELATIONSHIP
+- Specifies an existing relationship to be used in the evaluation of a DAX expression. The relationship is defined by naming, as arguments, the two columns that serve as endpoints.
+- Syntax - USERELATIONSHIP(ColumnName1, ColumnName2)
 
 ## Example -
 ```dax
-EVALUATE
-CALCULATETABLE (
-    ADDCOLUMNS (
-        ALL ( 'Product'[Category] ),
-        "Sales Amount", [Sales Amount],
-        "Sales Sel",
-            CALCULATE (
-                [Sales Amount],
-                ALLSELECTED ( Product[Category] )
-            )
-    ),
-    Product[Category] IN { "Audio", "Computer" }
-)
-```
-
-### 4. CALCULATE
-- Evaluates an expression in a context modified by filters.
-- Syntax - CALCULATE(Expression, Filters)
-
-- ## Example -
-```dax
 DEFINE
-    MEASURE Sales[Red Blue Sales Keepfilters] =
+    MEASURE Sales[Delivery Amount] =
         CALCULATE (
             [Sales Amount],
-            KEEPFILTERS ( 'Product'[Color] IN { "Red", "Blue" } )
-        )
-    MEASURE Sales[Red Blue Sales] =
-        CALCULATE (
-            [Sales Amount],
-            'Product'[Color] IN { "Red", "Blue" }
+            USERELATIONSHIP ( Sales[Delivery Date], 'Date'[Date] )
         )
 EVALUATE
 SUMMARIZECOLUMNS (
-    'Product'[Color],
+    'Date'[Calendar Year],
     "Sales Amount", [Sales Amount],
-    "Red Blue Sales", [Red Blue Sales],
-    "Red Blue Sales Keepfilters", [Red Blue Sales Keepfilters]
+    "Delivery Amount", [Delivery Amount]
 )
 ```
