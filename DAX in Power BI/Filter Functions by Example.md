@@ -123,7 +123,6 @@ CALCULATETABLE (
 
 ## Example -
 ```dax
--- Returns the colors of Proseware branded products
 EVALUATE
 CALCULATETABLE (
     VALUES ( 'Product'[Color] ),
