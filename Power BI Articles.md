@@ -15,3 +15,5 @@
 - Harnessing the Power of Power BI: A Comprehensive Guide -> https://medium.com/@vaideekbhanushali/harnessing-the-power-of-power-bi-a-comprehensive-guide-3d43679ea4d2
 
 - Building Your First Power BI Report From Scratch -> https://archive.ph/KFycg#selection-313.0-313.48
+
+- Interview Questions - https://medium.com/microsoft-power-bi/power-bi-interview-questions-part-1-4982de3be327 | https://medium.com/microsoft-power-bi/power-bi-interview-questions-part-2-de5c7b16db84
